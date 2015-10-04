@@ -1,4 +1,10 @@
-<p>
-  Modify me in `app/views/homes/index.html.erb` or change the root directive in
-  `config/routes.rb`
-</p>
+<div class="row">
+  <div class="small-5 small-centered columns">
+    <h4>Sign In</h4>
+    <button href="#" class="facebook radius button split"> <span></span>sign in with facebook</button>
+    <button href="#" class="twitter radius button split"> <span></span>sign in with twitter</button>
+    <button href="#" class="google radius button split"> <span></span>sign in with google +</button>
+    <a class="gbutton" href="">sign up</a>
+  </div>
+</div>
+<%= link_to "user page", user_path(current_user) %>
