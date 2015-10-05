@@ -1,17 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @mcasey5216
- Watch 7
-  Star 8
-  Fork 5 LaunchAcademy/launchcop
-Branch: master  launchcop/config/rubocop.yml
-@dpickettdpickett on Feb 13 adjust settings per team convention
-3 contributors @radavis @HeroicEric @dpickett
-RawBlameHistory     279 lines (188 sloc)  3.19 KB
 AllCops:
   Exclude:
     - db/schema.rb
@@ -290,5 +276,3 @@ Style/UnneededPercentQ:
 
 Metrics/AbcSize:
   Enabled: false
-Status API Training Shop Blog About Pricing
-© 2015 GitHub, Inc. Terms Privacy Security Contact Help
