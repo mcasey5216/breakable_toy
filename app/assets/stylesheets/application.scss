@@ -26,7 +26,7 @@ body {
 .profile-block-list {
   text-decoration: none;
   list-style-type: none;
-
+}
 
 @mixin div-blocks($border-color) {
   border: 3px solid $border-color;

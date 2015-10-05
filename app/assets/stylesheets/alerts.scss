@@ -17,6 +17,7 @@
       color: $primary;
     }
   }
+
   &.secondary {
     border-left-color: $secondary;
     background-color: scale-color($secondary, $lightness: 40%);
@@ -24,6 +25,7 @@
       color: $secondary;
     }
   }
+
   &.info {
     border-left-color: $info;
     background-color: scale-color($info, $lightness: 40%);
@@ -31,6 +33,7 @@
       color: $info;
     }
   }
+
   &.alert {
     border-left-color: $alert;
     background-color: scale-color($alert, $lightness: 40%);
@@ -38,6 +41,7 @@
       color: $alert;
     }
   }
+
   &.success {
     border-left-color: $success;
     background-color: scale-color($success, $lightness: 40%);
@@ -45,6 +49,7 @@
       color: $success;
     }
   }
+
   &.warning {
     border-left-color: $warning;
     background-color: scale-color($warning, $lightness: 40%);
