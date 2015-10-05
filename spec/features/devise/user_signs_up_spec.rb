@@ -18,6 +18,12 @@ feature 'user registers', %Q{
     fill_in 'Email', with: 'john@example.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
+    fill_in 'First name', with: 'name'
+    fill_in 'Last name', with: 'name'
+    fill_in 'City', with: 'boston'
+    fill_in 'State', with: 'ma'
+    fill_in 'Zip', with: '12345'
+    fill_in 'Phone', with: '1234567890'
 
     click_button 'Sign up'
 
