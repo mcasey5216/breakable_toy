@@ -1,15 +1,15 @@
 <div class="profile-block row">
     <%= image_tag("avatar-generic.jpg", class: "th columns small-4") %>
     <ul class="profile-block-list columns small-5 end">
-      <li>John Doe</li>
-      <li>Job Title</li>
-      <li>johndoe@company.com</li>
-      <li>123 Fake Street</li>
-      <li>Nowhwere, MA 12345</li>
-      <li><a href="tel:408-867-5309">555-555-5555</a></li>
-      <li><a href="#">http://foundation.zurb.com/</a></li>
+      <li><%= @user.first_name %> <%= @user.last_name %></li>
+      <li><%= @user.title %></li>
+      <li><%= @user.email %></li>
+      <li><%= @user.address %></li>
+      <li><%= @user.city %>, <%= @user.state %> <%= @user.zip %></li>
+      <li><a href="tel:#{<%= @user.first_name %>}"><%= @user.phone %></a></li>
+      <li>last sign in: <%= @user.last_sign_in_at %></li>
     </ul>
     <div class="columns small-2">
-      <%= link_to "Update", root_path, class: "button tiny" %>
+      <%= link_to "Update", edit_user_registration_path, class: "button tiny" %>
     </div>
 </div>
