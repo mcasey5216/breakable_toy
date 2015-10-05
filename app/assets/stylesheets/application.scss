@@ -24,35 +24,35 @@ body {
   text-decoration: none;
   list-style-type: none;
 }
-@mixin div-blocks($border-color: #8AC007) {
-  border: 2px solid $border-color;
-  padding: 5%;
-  border-radius: 50px;
+@mixin div-blocks($border-color) {
+  border: 3px solid $border-color;
+  padding: 3%;
+  border-radius: 40px;
 }
 @mixin div-hovers {
-  padding: 5%;
-  box-shadow: 8px 8px 8px black;
+  padding: 3%;
+  box-shadow: 5px 5px 5px #bbb;
 }
 .profile-block {
-  @include div-blocks;
+  @include div-blocks(gray);
   &:hover {
     @include div-hovers;
   }
 }
 .group-block {
-  @include div-blocks;
+  @include div-blocks(orange);
   &:hover {
     @include div-hovers;
   }
 }
 .task-block {
-  @include div-blocks;
+  @include div-blocks(purple);
   &:hover {
     @include div-hovers;
   }
 }
 .user-block {
-  @include div-blocks;
+  @include div-blocks(green);
   &:hover {
     @include div-hovers;
   }
