@@ -10,22 +10,24 @@
 <body>
   <div class="row">
     <span class="columns small-4">
-      <h2><a href="/" class="fi-home">Home</a></h2>
+      <h2 class="fi-home">
+        <%= link_to " Home", user_path(current_user.id) %>
+      </h2>
     </span>
     <div class="columns small-8">
       <ul class="inline-list right">
-      <%- if current_user -%>
-        <li>
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-        </li>
-        <%- else -%>
+        <%- if current_user -%>
           <li>
-            <%= link_to 'Sign Up', new_user_registration_path %>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           </li>
-          <li>
-            <%= link_to 'Sign In', new_user_session_path %>
-          </li>
-      <%- end -%>
+          <%- else -%>
+            <li>
+              <%= link_to 'Sign Up', new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to 'Sign In', new_user_session_path %>
+            </li>
+            <%- end -%>
       </ul>
     </div>
   </div>
