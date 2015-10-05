@@ -1,1 +1,10 @@
-
+@import "foundation/components/tabs";
+.tabs {
+  padding-top: 5%;
+}
+.tabs-content {
+  padding: 5%
+}
+div ul li.tabs.tab-title {
+  background-color: blue;
+}
