@@ -14,5 +14,14 @@ FactoryGirl.define do
     zip '12345'
     phone '1234567890'
   end
+  factory :group do
+    sequence(:name) {|n| "GroupName#{n}" }
+    association :primary_user, factory: :user
+    description "Group Description"
+  end
+  factory :membership do
+    user
+    group
+  end
 
 end
