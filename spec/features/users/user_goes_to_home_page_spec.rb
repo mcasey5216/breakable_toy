@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user goes to home page', %Q{
+feature 'user goes to home page', %{
   As a user
   I want to go to my home page
   So that I can see my lastest updates and profile
@@ -13,12 +13,12 @@ feature 'user goes to home page', %Q{
 } do
   feature "user is signed in" do
     before(:each) do
-       @user = FactoryGirl.create(:user)
-       visit new_user_session_path
-       fill_in 'Email', with: @user.email
-       fill_in 'Password', with: @user.password
-       click_button 'Log in'
-     end
+      @user = FactoryGirl.create(:user)
+      visit new_user_session_path
+      fill_in 'Email', with: @user.email
+      fill_in 'Password', with: @user.password
+      click_button 'Log in'
+    end
 
     scenario 'Users should see home icon and sub-nav bar' do
       visit user_path(@user.id)
@@ -31,10 +31,7 @@ feature 'user goes to home page', %Q{
       expect(page).to have_content('Files')
       expect(page).to have_content('Sign Out')
     end
-
     scenario 'User should see their profile block' do
-      user = FactoryGirl.create(:user)
-
       visit user_path(@user.id)
 
       expect(page).to have_content(@user.first_name)
@@ -45,7 +42,7 @@ feature 'user goes to home page', %Q{
       expect(page).to have_content(@user.state)
       expect(page).to have_content(@user.zip)
       expect(page).to have_content(@user.phone)
-      expect(page).to have_content(@user.last_sign_in_at)  
+      expect(page).to have_content(@user.last_sign_in_at)
     end
   end
 end
