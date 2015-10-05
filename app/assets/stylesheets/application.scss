@@ -15,3 +15,54 @@
  *= require foundation_and_overrides
 
  */
+@import "colors";
+
+$margin:10%;
+
+body {
+  margin: $margin;
+}
+
+.profile-block-list {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+@mixin div-blocks($border-color) {
+  border: 3px solid $border-color;
+  padding: 3%;
+  border-radius: 40px;
+}
+
+@mixin div-hovers {
+  padding: 3%;
+  box-shadow: 5px 5px 5px $shadow;
+}
+
+.profile-block {
+  @include div-blocks($gray);
+  &:hover {
+    @include div-hovers;
+  }
+}
+
+.group-block {
+  @include div-blocks($orange);
+  &:hover {
+    @include div-hovers;
+  }
+}
+
+.task-block {
+  @include div-blocks($purple);
+  &:hover {
+    @include div-hovers;
+  }
+}
+
+.user-block {
+  @include div-blocks($green);
+  &:hover {
+    @include div-hovers;
+  }
+}

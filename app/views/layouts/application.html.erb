@@ -1,40 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>BreakableToy</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
 </head>
+
 <body>
-
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">BreakableToy</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
-
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+  <%- if current_user -%>
+    <div class="row">
+      <span class="columns small-4">
+        <h2 class="fi-home">
+          <%= link_to " Home", user_path(current_user) %>
+        </h2>
+      </span>
+      <div class="columns small-8">
+        <ul class="inline-list right">
+          <li>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+          </li>
+        </ul>
+          <%- else -%>
+        <ul class="inline-list right">
+          <li>
+            <%= link_to 'Sign Up', new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to 'Sign In', new_user_session_path %>
+          </li>
+        </ul>
+          <%- end -%>
+      </div>
     </div>
-  <%- end -%>
+    <div class="row">
+      <%- if current_user -%>
+      <div class="columns small-12">
+        <dl class="sub-nav">
+          <dd>
+            <a href="" class="fi-torsos"> Groups</a>
+          </dd>
+          <dd>
+            <a href="" class="fi-clipboard"> Tasks</a>
+          </dd>
+          <dd>
+            <a href="" class="fi-torso-business"> Users</a>
+          </dd>
+          <dd>
+            <a href="" class="fi-address-book"> Roledex</a>
+          </dd>
+          <dd>
+            <a href="" class="fi-folder"> Files</a>
+          </dd>
+        </dl>
+      </div>
+      <%- end -%>
+    </div>
 
-  <%= yield %>
+    <%- flash.each do |key, value| -%>
+      <div class="flash flash-<%= key %>">
+        <%= value %>
+      </div>
+      <%- end -%>
 
-  <%= javascript_include_tag 'application' %>
-  <%= yield :extra_footer %>
+        <%= yield %>
+
+          <%= javascript_include_tag 'application' %>
+            <%= yield :extra_footer %>
 </body>
+
 </html>
