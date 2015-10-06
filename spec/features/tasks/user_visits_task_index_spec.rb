@@ -29,8 +29,6 @@ feature 'user goes to task index page', %{
       expect(page).to have_content(task.title)
       expect(page).to have_content(task.description)
       expect(page).to have_content(membership.group.name)
-      expect(page).to have_content(membership.user.first_name)
-      expect(page).to have_content(membership.user.last_name)
     end
   end
 end

@@ -29,9 +29,6 @@ feature 'user goes to group index page', %{
       click_link 'Groups'
       expect(page).to have_content(group.name)
       expect(page).to have_content(group.description)
-      expect(page).to have_content(group.primary_user.first_name)
-      expect(page).to have_content(group.primary_user.last_name)
-      expect(page).to have_content(group.primary_user.email)
     end
   end
 end
