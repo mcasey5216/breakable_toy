@@ -1,0 +1,21 @@
+<div class="group-profile-block row">
+  <ul class="profile-block-list columns small-5 end">
+    <li></li>
+    <li><%= @task.title %></li>
+    <li><%= @task.description %></li>
+    <li><%= @task.group.name %></li>
+    <li>
+      Users:
+      <ul>
+      <% @task.users.each do |user| %>
+        <li>
+          <%= link_to task_path(user) do %>
+          <%= user.first_name %> <%= user.last_name %> <%= user.email %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>
+<hr>

@@ -36,9 +36,5 @@ feature 'user goes to contact index page', %{
       expect(page).to have_content(contact.phone)
       expect(page).to have_content(contact.phone_ext)
     end
-
-    scenario 'User can click div to link to show page' do
-
-    end
   end
 end

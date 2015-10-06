@@ -1,0 +1,17 @@
+<div class="group-profile-block row">
+  <ul class="profile-block-list columns small-5 end">
+    <li>
+      Main Contact:
+      <ul>
+        <li>
+          <%= @group.primary_user.first_name %>
+          <%= @group.primary_user.last_name %>
+        </li>
+        <li><%= @group.primary_user.email %></li>
+      </ul>
+    </li>
+    <li><%= @group.name %></li>
+    <li><%= @group.description %></li>
+  </ul>
+</div>
+<hr>
