@@ -6,11 +6,11 @@ class GroupSeeder
       description: "This group likes to be the best"
     }, {
       name: "Second Best Group Ever",
-      primary_user: User.last,
+      primary_user: User.first,
       description: "This group likes to be the second best"
     }, {
       name: "Third Best Group Ever",
-      primary_user: User.first,
+      primary_user: User.last,
       description: "This group likes to be the third best"
     }
   ]

@@ -29,5 +29,19 @@ FactoryGirl.define do
     user
     group
   end
-
+  factory :contact do
+    sequence(:email) { |n| "user#{n}@example.com" }
+    first_name 'bob'
+    last_name 'saget'
+    company_name 'company'
+    address '123 street rd'
+    city 'boston'
+    state 'ma'
+    zip '12345'
+    phone '1234567890'
+    phone_ext '123'
+    category 'category'
+    description 'description'
+    group
+  end
 end

@@ -1,0 +1,14 @@
+<div class="contact-profile-block row">
+  <%= image_tag("map-generic.jpg", class: "th columns small-4") %>
+  <ul class="profile-block-list columns small-5 end">
+    <li><%= @contact.first_name %> <%= @contact.last_name %></li>
+    <li><%= @contact.company_name %></li>
+    <li><%= @contact.phone %> ext:<%= @contact.phone_ext %></li>
+    <li><%= @contact.address %></li>
+    <li><%= @contact.city %>, <%= @contact.state %> <%= @contact.zip %></li>
+    <li><%= @contact.category %></li>
+  </ul>
+</div>
+<hr>
+<h4>Notes:</h4> 
+<p><%= @contact.description %></p>
