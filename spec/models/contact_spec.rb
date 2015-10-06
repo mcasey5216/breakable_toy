@@ -33,5 +33,5 @@ RSpec.describe Contact, type: :model do
 
   it { should have_valid(:category).when("Electrican", "Plumber") }
 
-  it { should have_valid(:description).when("closes at 8", "On vacation until 1/1") }
+  it { should have_valid(:description).when("closes at 8", "On vacay 1/1") }
 end
