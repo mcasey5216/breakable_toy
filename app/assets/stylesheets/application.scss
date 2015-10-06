@@ -39,7 +39,14 @@ body {
   box-shadow: 5px 5px 5px $shadow;
 }
 
-.profile-block {
+.user-profile-block {
+  @include div-blocks($gray);
+  &:hover {
+    @include div-hovers;
+  }
+}
+
+.group-profile-block {
   @include div-blocks($gray);
   &:hover {
     @include div-hovers;
