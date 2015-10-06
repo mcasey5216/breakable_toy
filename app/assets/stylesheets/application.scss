@@ -53,6 +53,13 @@ body {
   }
 }
 
+.task-profile-block {
+  @include div-blocks($gray);
+  &:hover {
+    @include div-hovers;
+  }
+}
+
 .group-block {
   @include div-blocks($orange);
   &:hover {

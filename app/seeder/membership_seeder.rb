@@ -2,10 +2,15 @@ class MembershipSeeder
   MEMBERSHIPS = [
     {
       group: Group.first,
-      user: User.first
+      user: User.first,
+      task: Task.first
+    }, {
+      group: Group.first,
+      user: User.last,
+      task: Task.first
     }, {
       group: Group.last,
-      user: User.last
+      user: User.first,
     }
   ]
   def self.seed!

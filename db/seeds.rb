@@ -13,5 +13,6 @@
 if Rails.env.development?
   UserSeeder.seed!
   GroupSeeder.seed!
+  TaskSeeder.seed!
   MembershipSeeder.seed!
 end

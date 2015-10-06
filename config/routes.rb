@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :users, only: :show
   resources :groups, only: :index
+  resources :tasks, only: :index
 end

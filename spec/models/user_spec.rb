@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  it { should have_many :memberships }
+  it { should have_many(:tasks).through(:memberships) }
+  it { should have_many(:groups).through(:memberships) }
+  it { should validate_length_of(:password).is_at_least(8) }
+  it { should validate_length_of(:zip).is_equal_to(5) }
+  it { should validate_length_of(:state).is_equal_to(2) }
+
   it { should have_valid(:email).when("email@gmail.com", "gmail@email.com") }
   it { should_not have_valid(:email).when(nil, '', 'zest.com') }
 
