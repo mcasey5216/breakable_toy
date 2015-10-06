@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :primaries, class_name: 'Group', foreign_key: 'primary_user_id'
   has_many :memberships
   has_many :groups, through: :memberships
+  has_many :tasks, through: :memberships
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

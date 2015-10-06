@@ -1,0 +1,21 @@
+<div class="task-profile-block row">
+    <%= image_tag("avatar-generic.jpg", class: "th columns small-4") %>
+    <ul class="profile-block-list columns small-5 end">
+      <% @memberships.each do |membership| %>
+        <% if membership.task != nil %>
+        <li><%= membership.task.title %></li>
+        <li><%= membership.task.description %></li>
+        <li>Group Name: <%= membership.group.name %></li>
+        <li>Members:</li>
+        <ul>
+          <% membership.task.users.each do |user| %>
+            <li><%= user.first_name %> <%= user.last_name %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      <% end %>
+    </ul>
+    <div class="columns small-2">
+      <%= link_to "Update", edit_user_registration_path, class: "button tiny" %>
+    </div>
+</div>

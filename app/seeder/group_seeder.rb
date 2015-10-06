@@ -8,6 +8,10 @@ class GroupSeeder
       name: "Second Best Group Ever",
       primary_user: User.last,
       description: "This group likes to be the second best"
+    }, {
+      name: "Third Best Group Ever",
+      primary_user: User.first,
+      description: "This group likes to be the third best"
     }
   ]
   def self.seed!

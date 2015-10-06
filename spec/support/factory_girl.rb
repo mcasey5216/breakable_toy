@@ -19,6 +19,12 @@ FactoryGirl.define do
     association :primary_user, factory: :user
     description "Group Description"
   end
+  factory :task do
+    sequence(:title) { |n| "TaskName#{n}" }
+    description "Task Description"
+    group
+    completed false
+  end
   factory :membership do
     user
     group
