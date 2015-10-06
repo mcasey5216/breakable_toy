@@ -80,3 +80,10 @@ body {
     @include div-hovers;
   }
 }
+
+.contact-profile-block {
+  @include div-blocks($green);
+  &:hover {
+    @include div-hovers;
+  }
+}

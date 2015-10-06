@@ -6,11 +6,11 @@ class MembershipSeeder
       task: Task.first
     }, {
       group: Group.first,
-      user: User.last,
+      user: User.first,
       task: Task.first
     }, {
       group: Group.last,
-      user: User.first,
+      user: User.last,
     }
   ]
   def self.seed!

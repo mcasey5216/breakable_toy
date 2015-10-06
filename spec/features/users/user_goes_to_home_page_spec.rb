@@ -26,8 +26,7 @@ feature 'user goes to home page', %{
       expect(page).to have_content('Home')
       expect(page).to have_content('Groups')
       expect(page).to have_content('Tasks')
-      expect(page).to have_content('Users')
-      expect(page).to have_content('Roledex')
+      expect(page).to have_content('Contacts')
       expect(page).to have_content('Files')
       expect(page).to have_content('Sign Out')
     end

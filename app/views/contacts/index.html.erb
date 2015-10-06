@@ -1,0 +1,15 @@
+  <ul class="profile-block-list columns small-12 end">
+    <% @user.groups.each do |idx| %>
+      <% idx.contacts.each do |contact|  %>
+        <%= link_to contact_path(contact) do %>
+          <div class="contact-profile-block row">
+            <li>Company: <%= contact.company_name %></li>
+            <li>Type: <%= contact.category %></li>
+            <li>Contact: <%= contact.first_name %> <%= contact.last_name %></li>
+            <li>Call: <%= contact.phone %> ext:<%= contact.phone_ext %></li>
+          </div>
+        <% end %>
+        <hr>
+      <% end %>
+    <% end %>
+  </ul>

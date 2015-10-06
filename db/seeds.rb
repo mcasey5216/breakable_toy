@@ -15,4 +15,5 @@ if Rails.env.development?
   GroupSeeder.seed!
   TaskSeeder.seed!
   MembershipSeeder.seed!
+  ContactSeeder.seed!
 end
