@@ -25,7 +25,7 @@ feature 'user goes to group index page', %{
     end
     scenario 'User should see the details of their groups' do
       group = FactoryGirl.create(:group, primary_user: @user)
-      membership = FactoryGirl.create(:membership, user: @user, group: group)
+      FactoryGirl.create(:membership, user: @user, group: group)
       click_link 'Groups'
       expect(page).to have_content(group.name)
       expect(page).to have_content(group.description)

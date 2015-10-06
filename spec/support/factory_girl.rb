@@ -2,7 +2,7 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :user do
-    sequence(:email) {|n| "user#{n}@example.com" }
+    sequence(:email) { |n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
     first_name 'bob'
@@ -15,7 +15,7 @@ FactoryGirl.define do
     phone '1234567890'
   end
   factory :group do
-    sequence(:name) {|n| "GroupName#{n}" }
+    sequence(:name) { |n| "GroupName#{n}" }
     association :primary_user, factory: :user
     description "Group Description"
   end
