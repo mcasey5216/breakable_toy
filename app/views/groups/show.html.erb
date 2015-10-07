@@ -1,17 +1,64 @@
+<h3><%= @group.name %> Group:</h3>
 <div class="group-profile-block row">
-  <ul class="profile-block-list columns small-5 end">
-    <li>
-      Main Contact:
-      <ul>
-        <li>
-          <%= @group.primary_user.first_name %>
-          <%= @group.primary_user.last_name %>
-        </li>
-        <li><%= @group.primary_user.email %></li>
-      </ul>
-    </li>
-    <li><%= @group.name %></li>
-    <li><%= @group.description %></li>
-  </ul>
+  <div class="profile-block-list columns small-8">
+    <ul class="no-bullets">
+      <li>
+        Main Contact:
+        <ul>
+          <li>
+            <%= @group.primary_user.first_name %>
+            <%= @group.primary_user.last_name %>
+          </li>
+          <li><%= @group.primary_user.email %></li>
+        </ul>
+      </li>
+      <li><%= @group.name %></li>
+      <li><%= @group.description %></li>
+    </ul>
+  </div>
+
+  <div class="columns small-3">
+    <% if @group.primary_user == current_user %>
+      <%= link_to "Add Users", class: "button tiny" %>
+    <% end %>
+  </div>
 </div>
 <hr>
+
+<div class="row">
+  <div class="columns small-4">
+    <h4>Users:</h4>
+  </div>
+  <div class="columns small-8">
+    <h4>Tasks:</h4>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="task-users-block columns small-4">
+      <% @group.users.each do |user| %>
+        <%= link_to user_path(user) do %>
+        <ul class="no-bullets">
+          <li>
+            <%= user.first_name %> <%= user.last_name %>
+          </li>
+          <li><%= user.email %></li>
+        </ul>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class="task-block columns small-8">
+    <% @group.tasks.each do |task| %>
+      <% if task != nil %>
+        <%= link_to task_path(task) do %>
+          <ul class="no-bullets">
+            <li><%= task.title %></li>
+            <li><%= task.description %></li>
+          </ul>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <hr>
+</div>

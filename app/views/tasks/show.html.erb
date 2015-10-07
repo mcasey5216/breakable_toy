@@ -10,14 +10,18 @@
   </ul>
 </div>
 <hr>
-<% @task.users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <ul class="task-users-block columns small-4 end">
-      <li>
-        <%= user.first_name %> <%= user.last_name %>
-      </li>
-      <li><%= user.email %></li>
-    </ul>
-  <% end %>
-<% end %>
-<hr>
+<div class="row">
+  <div class="task-users-block columns small-4">
+    <% @task.users.each do |user| %>
+      <%= link_to user_path(user) do %>
+        <ul class="no-bullets">
+          <li>
+            <%= user.first_name %> <%= user.last_name %>
+          </li>
+          <li><%= user.email %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+  <hr>

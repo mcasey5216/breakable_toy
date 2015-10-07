@@ -2,18 +2,8 @@ class TaskSeeder
   TASKS = [
     {
       group: Group.first,
-      title: "Task 1",
-      description: "This is the first task",
-      completed: false
-    }, {
-      group: Group.first,
-      title: "Task 2",
-      description: "This is the second task",
-      completed: false
-    }, {
-      group: Group.last,
-      title: "Task 3",
-      description: "This is the third task",
+      title: "Brainstorming",
+      description: "Please discuss ideas here.",
       completed: false
     }
   ]
