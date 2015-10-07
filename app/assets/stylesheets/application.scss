@@ -87,3 +87,11 @@ body {
     @include div-hovers;
   }
 }
+
+.task_users_block {
+  @include div-blocks($green);
+  text-decoration: none;
+  &:hover {
+    @include div-hovers;
+  }
+}
