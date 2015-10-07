@@ -10,13 +10,12 @@ class MembershipsController < ApplicationController
       @memberships = @task.memberships
     end
     @users = User.all
-
   end
 
   def create
     @users = User.all
     if params[:group_id]
-    @group = Group.find(params[:group_id])
+      @group = Group.find(params[:group_id])
       @membership = Membership.new(membership_params_group)
       if @membership.save
         flash[:success] = "Updates Successful"
@@ -37,7 +36,6 @@ class MembershipsController < ApplicationController
         render :index
       end
     end
-
   end
 
   protected
@@ -47,6 +45,7 @@ class MembershipsController < ApplicationController
   end
 
   def membership_params_task
-    params.require(:membership).permit(:user_id).merge(group: @task.group, task: @task)
+    params.require(:membership).permit(
+      :user_id).merge(group: @task.group, task: @task)
   end
 end
