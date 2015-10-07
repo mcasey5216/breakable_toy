@@ -21,7 +21,9 @@ feature 'user goes to task show page', %{
     scenario 'User should see the details of the task' do
       group = FactoryGirl.create(:group, primary_user: @user)
       task = FactoryGirl.create(:task, group: group)
-      membership = FactoryGirl.create(:membership, user: @user, group: group, task: task)
+      membership = FactoryGirl.create(
+        :membership, user: @user, group: group, task: task
+      )
       click_link 'Tasks'
       click_link "#{task.title}"
       expect(page).to have_content(task.title)

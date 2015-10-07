@@ -12,7 +12,7 @@
 <hr>
 <% @task.users.each do |user| %>
   <%= link_to user_path(user) do %>
-    <ul class="task_users_block columns small-4 end">
+    <ul class="task-users-block columns small-4 end">
       <li>
         <%= user.first_name %> <%= user.last_name %>
       </li>
