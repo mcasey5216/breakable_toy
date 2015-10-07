@@ -1,13 +1,28 @@
 class MembershipsController < ApplicationController
-  def edit
-    @memberships = Membership.where(group: params[:group_id])
+  autocomplete :user, :email, full: true, extra_data: [:first_name]
+  def index
+    @group = Group.find(params[:group_id])
+    @memberships = @group.memberships
     @users = User.all
+
   end
 
-  def update
-  #   @group = Group.find(params[:id])
-  #   if @group.update_attributes(membership_params)
-  #     flash[:success] = "Updates Successful"
-  #     redirect_to
+  def create
+    @users = User.all
+    @group = Group.find(params[:group_id])
+    @membership = Membership.new(membership_params)
+    if @membership.save
+      flash[:success] = "Updates Successful"
+      redirect_to group_path(@group)
+    else
+      flash[:alert] = "Nope"
+      render :index
+    end
+  end
+
+  protected
+
+  def membership_params
+    params.require(:membership).permit(:user_id).merge(group: @group)
   end
 end

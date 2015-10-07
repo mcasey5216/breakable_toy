@@ -55,14 +55,15 @@
     </div>
 
     <%- flash.each do |key, value| -%>
-      <div class="flash flash-<%= key %>">
+      <div alert-box class="alert-box success flash-<%= key %>">
+
         <%= value %>
       </div>
       <%- end -%>
 
         <%= yield %>
 
-          <%= javascript_include_tag 'application' %>
+          <%= javascript_include_tag 'application', "autocomplete-rails.js"  %>
             <%= yield :extra_footer %>
 </body>
 
