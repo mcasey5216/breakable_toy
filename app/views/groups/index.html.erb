@@ -1,20 +1,11 @@
-<div class="group-profile-block row">
-    <%= image_tag("avatar-generic.jpg", class: "th columns small-4") %>
-    <ul class="profile-block-list columns small-5 end">
-      <% @memberships.each do |membership| %>
+<ul class="profile-block-list columns small-12 end">
+  <% @memberships.each do |membership| %>
+  <%= link_to group_path(membership.group) do %>
+    <div class="group-profile-block row">
       <li><%= membership.group.name %></li>
       <li><%= membership.group.description %></li>
-      <li>Group Leader:</li>
-      <ul>
-        <li>
-          <%= membership.group.primary_user.first_name %>
-          <%= membership.group.primary_user.last_name %>
-        </li>
-        <li><%= membership.group.primary_user.email %></li>
-      </ul>
-      <% end %>
-    </ul>
-    <div class="columns small-2">
-      <%= link_to "Update", edit_user_registration_path, class: "button tiny" %>
     </div>
-</div>
+  <% end %>
+  <hr>
+  <% end %>
+</ul>
