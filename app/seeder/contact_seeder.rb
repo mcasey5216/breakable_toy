@@ -15,6 +15,20 @@ class ContactSeeder
       description: "closes at 5",
       group: Group.first
     }, {
+      email: "client@gmail.com",
+      first_name: "Jane",
+      last_name: "Client",
+      company_name: "Client, Inc",
+      address: "33 Harrison Ave",
+      city: "Boston",
+      state: "MA",
+      zip: "02111",
+      phone: 1234567890,
+      phone_ext: 123,
+      category: "Client",
+      description: "don't call before noon",
+      group: Group.first
+    }, {
       email: "electric@gmail.com",
       first_name: "Jim",
       last_name: "Electric",
@@ -41,7 +55,7 @@ class ContactSeeder
       phone_ext: 123,
       category: "Lawyer",
       description: "closes at 8",
-      group: Group.last
+      group: Group.first
     }
   ]
   def self.seed!

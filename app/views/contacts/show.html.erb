@@ -7,8 +7,9 @@
     <li><%= @contact.address %></li>
     <li><%= @contact.city %>, <%= @contact.state %> <%= @contact.zip %></li>
     <li><%= @contact.category %></li>
+    <li>from: <span class="fi-torsos"><%= @contact.group.name %></span></li>
   </ul>
 </div>
 <hr>
-<h4>Notes:</h4> 
+<h4>Notes:</h4>
 <p><%= @contact.description %></p>

@@ -1,17 +1,9 @@
 class GroupSeeder
   GROUPS = [
     {
-      name: "Best Group Ever",
+      name: "Design Devolpment",
       primary_user: User.first,
-      description: "This group likes to be the best"
-    }, {
-      name: "Second Best Group Ever",
-      primary_user: User.first,
-      description: "This group likes to be the second best"
-    }, {
-      name: "Third Best Group Ever",
-      primary_user: User.last,
-      description: "This group likes to be the third best"
+      description: "This groups is for development related ideas"
     }
   ]
   def self.seed!

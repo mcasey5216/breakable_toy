@@ -31,7 +31,7 @@ body {
 @mixin div-blocks($border-color) {
   border: 3px solid $border-color;
   padding: 3%;
-  border-radius: 40px;
+  border-radius: 20px;
 }
 
 @mixin div-hovers {

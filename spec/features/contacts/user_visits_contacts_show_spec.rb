@@ -35,6 +35,7 @@ feature 'user goes to contact show page', %{
       expect(page).to have_content(contact.state)
       expect(page).to have_content(contact.zip)
       expect(page).to have_content(contact.description)
+      expect(page).to have_content(contact.group.name)
     end
   end
 end
