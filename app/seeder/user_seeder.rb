@@ -36,7 +36,7 @@ class UserSeeder
       state: "NY",
       zip: "10038",
       phone: "2122850120"
-    },  {
+    }, {
       email: "matt@gmail.com",
       password: "password",
       password_confirmation: "password",

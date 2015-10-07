@@ -1,0 +1,20 @@
+<% @memberships.each do |membership| %>
+<h3>Add Members to <small class="fi-torsos"><%= membership.group.name %></small></h3>
+<div class="">
+  primary = <%= membership.group.primary_user.email %>
+</div>
+<% end %>
+<br>
+<div class="row">
+  <div class="columns small-4">
+    <ul>
+      <% @users.each do |user| %>
+      <div class="user-profile-block">
+        <li><%= user.email %></li>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+  <div class="columns small-8">
+  </div>
+</div>

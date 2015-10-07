@@ -19,7 +19,9 @@
 
   <div class="columns small-3">
     <% if @group.primary_user == current_user %>
-      <%= link_to "Add Users", class: "button tiny" %>
+      <% @group.memberships.each do |membership| %>
+        <%= link_to "Add Users", edit_group_membership_path(group_id: @group, id: membership), class: "button tiny" %>
+      <% end %>
     <% end %>
   </div>
 </div>
