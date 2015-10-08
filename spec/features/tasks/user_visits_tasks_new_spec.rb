@@ -35,22 +35,22 @@ feature 'user goes to task new page', %{
       find_field("Description")
     end
 
-    # scenario 'User should be alerted if successful' do
-    #   page.all("input['name=task[group_id]']", :visible => false).first.set(@group)
-    #   fill_in "Title", with: "task"
-    #   fill_in "Description", with: "description"
-    #   click_button "Create Task"
-    #
-    #   expect(current_path).to eq(group_task_path(@group))
-    #   expect(page).to have_content("Task Created")
-    # end
+    xscenario 'User should be alerted if successful' do
+      page.all("input['name=task[group_id]']", :visible => false).first.set(@group)
+      fill_in "Title", with: "task"
+      fill_in "Description", with: "description"
+      click_button "Create Task"
 
-    # scenario 'User should be alerted if unsuccessful' do
-    #   find('#task_group_id', visible: false).value(@group)
-    #   click_button "Create Task"
-    #
-    #   expect(current_path).to eq(new_group_task_path(@group))
-    #   expect(page).to have_content("can't be black")
-    # end
+      expect(current_path).to eq(group_task_path(@group))
+      expect(page).to have_content("Task Created")
+    end
+
+    scenario 'User should be alerted if unsuccessful' do
+      find('#task_group_id', visible: false).value(@group)
+      click_button "Create Task"
+
+      expect(current_path).to eq(new_group_task_path(@group))
+      expect(page).to have_content("can't be black")
+    end
   end
 end
