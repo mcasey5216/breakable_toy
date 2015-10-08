@@ -1,3 +1,4 @@
+<%= link_to "Create Group", new_group_path %>
 <ul class="profile-block-list columns small-12 end">
   <% @memberships.each do |membership| %>
   <%= link_to group_path(membership.group) do %>
