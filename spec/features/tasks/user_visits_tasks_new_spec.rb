@@ -36,7 +36,8 @@ feature 'user goes to task new page', %{
     end
 
     # scenario 'User should be alerted if successful' do
-    #   page.all("input['name=task[group_id]']", :visible => false).first.set(@group)
+    #   page.all("input['name=task[group_id]']",
+          # :visible => false).first.set(@group)
     #   fill_in "Title", with: "task"
     #   fill_in "Description", with: "description"
     #   click_button "Create Task"

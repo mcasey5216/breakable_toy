@@ -26,6 +26,8 @@ class GroupsController < ApplicationController
   protected
 
   def group_params
-    params.require(:group).permit(:name, :description).merge(primary_user: current_user)
+    params.require(:group).permit(
+      :name,
+      :description).merge(primary_user: current_user)
   end
 end
