@@ -1,0 +1,25 @@
+<% if params[:group_id] %>
+  <h3>Add Members to <small class="fi-torsos"><%= @group.name %></small></h3>
+  <div class="">
+    primary = <%= @group.primary_user.email %>
+  </div>
+<% else %>
+  <h3>Add Members to <small class="fi-clipboard"> <%= @task.title %></small></h3>
+<% end %>
+
+  <div class="row">
+    <div class="columns small-4">
+      <ul>
+        <% @users.each do |user| %>
+          <li>
+            <%= form_for :membership do |f| %>
+              <%= f.hidden_field :user_id, value: user.id %>
+              <%= f.submit "#{user.email}", class: "button expand"%>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="columns small-8">
+    </div>
+  </div>

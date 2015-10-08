@@ -19,7 +19,7 @@
 
   <div class="columns small-3">
     <% if @group.primary_user == current_user %>
-      <%= link_to "Add Users", class: "button tiny" %>
+        <%= link_to "Add Users", group_memberships_path(@group), class: "button tiny" %>
     <% end %>
   </div>
 </div>
@@ -34,18 +34,21 @@
   </div>
 </div>
 
-  <div class="row">
-    <div class="task-users-block columns small-4">
-      <% @group.users.each do |user| %>
-        <%= link_to user_path(user) do %>
-        <ul class="no-bullets">
-          <li>
-            <%= user.first_name %> <%= user.last_name %>
-          </li>
-          <li><%= user.email %></li>
-        </ul>
-        <% end %>
+<div class="row">
+  <div class="columns small-4">
+    <% @group.users.each do |user| %>
+      <%= link_to user_path(user) do %>
+        <div class="task-users-block">
+          <ul class="no-bullets">
+            <li>
+              <%= user.first_name %> <%= user.last_name %>
+            </li>
+            <li><%= user.email %></li>
+          </ul>
+        </div>
+        <hr>
       <% end %>
+    <% end %>
   </div>
 
   <div class="task-block columns small-8">
