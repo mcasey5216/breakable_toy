@@ -1,4 +1,5 @@
 <h3><%= @group.name %> Group:</h3>
+<%= link_to "Create Task", new_group_task_path(@group), class: "button" %>
 <div class="group-profile-block row">
   <div class="profile-block-list columns small-8">
     <ul class="no-bullets">
@@ -27,10 +28,10 @@
 
 <div class="row">
   <div class="columns small-4">
-    <h4>Users:</h4>
+    <h4 class="fi-torso-business"> Users:</h4>
   </div>
   <div class="columns small-8">
-    <h4>Tasks:</h4>
+    <h4 class="fi-clipboard"> Tasks:</h4>
   </div>
 </div>
 
@@ -51,14 +52,17 @@
     <% end %>
   </div>
 
-  <div class="task-block columns small-8">
+  <div class="columns small-8">
     <% @group.tasks.each do |task| %>
       <% if task != nil %>
         <%= link_to task_path(task) do %>
-          <ul class="no-bullets">
-            <li><%= task.title %></li>
-            <li><%= task.description %></li>
-          </ul>
+          <div class="task-users-block">
+            <ul class="no-bullets">
+              <li><%= task.title %></li>
+              <li><%= task.description %></li>
+            </ul>
+          </div>
+          <hr>
         <% end %>
       <% end %>
     <% end %>

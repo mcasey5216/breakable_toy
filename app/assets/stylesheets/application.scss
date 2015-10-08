@@ -29,13 +29,13 @@ body {
 }
 
 @mixin div-blocks($border-color) {
-  border: 3px solid $border-color;
-  padding: 3%;
-  border-radius: 20px;
+  border: 2px solid $border-color;
+  padding: 2%;
+  border-radius: 10px;
 }
 
 @mixin div-hovers {
-  padding: 3%;
+  padding: 2%;
   box-shadow: 5px 5px 5px $shadow;
 }
 
