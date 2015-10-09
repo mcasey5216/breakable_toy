@@ -32,7 +32,6 @@ feature 'user goes to group new page', %{
       find_field("Description")
     end
 
-
     scenario 'User should be alerted if successful' do
       fill_in "Name", with: "Group"
       fill_in "Description", with: "Group Description"

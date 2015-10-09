@@ -31,12 +31,12 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-     flash[:notice] = "#{@task.title} has been updated."
-     redirect_to @task
-   else
-     flash[:errors] = @task.errors.full_messages.join(', ')
-     render :edit
-   end
+      flash[:notice] = "#{@task.title} has been updated."
+      redirect_to @task
+    else
+      flash[:errors] = @task.errors.full_messages.join(', ')
+      render :edit
+    end
   end
 
   def destroy

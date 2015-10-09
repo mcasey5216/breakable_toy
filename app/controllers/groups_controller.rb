@@ -32,12 +32,12 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-     flash[:notice] = "#{@group.name} has been updated."
-     redirect_to @group
-   else
-     flash[:errors] = @group.errors.full_messages.join(', ')
-     render :edit
-   end
+      flash[:notice] = "#{@group.name} has been updated."
+      redirect_to @group
+    else
+      flash[:errors] = @group.errors.full_messages.join(', ')
+      render :edit
+    end
   end
 
   def destroy
