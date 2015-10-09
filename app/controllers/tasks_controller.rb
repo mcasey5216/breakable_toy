@@ -24,6 +24,32 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      flash[:notice] = "#{@task.title} has been updated."
+      redirect_to @task
+    else
+      flash[:errors] = @task.errors.full_messages.join(', ')
+      render :edit
+    end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    if @task.destroy
+      flash[:success] = "Task has been deleted from #{@task.group.name}."
+      redirect_to group_path(@task.group)
+    else
+      flash[:alert] = @task.errors.full_messages.join(', ')
+      redirect_to group_path(@task.group)
+    end
+  end
+
   protected
 
   def task_params

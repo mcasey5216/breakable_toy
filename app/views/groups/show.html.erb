@@ -1,4 +1,4 @@
-<h3><%= @group.name %> Group:</h3>
+<h3 class="fi-torsos"> <%= @group.name %></h3>
 <%= link_to "Create Task", new_group_task_path(@group), class: "button" %>
 <div class="group-profile-block row">
   <div class="profile-block-list columns small-8">
@@ -21,6 +21,8 @@
   <div class="columns small-3">
     <% if @group.primary_user == current_user %>
         <%= link_to "Add Users", group_memberships_path(@group), class: "button tiny" %>
+        <%= link_to "Delete Group", @group, method: :delete, class: 'button tiny' %>
+        <%= link_to "Update Group", edit_group_path(@group), class: 'button tiny' %>
     <% end %>
   </div>
 </div>

@@ -1,8 +1,8 @@
 class Group < ActiveRecord::Base
   belongs_to :primary_user, class_name: 'User'
-  has_many :contacts
-  has_many :memberships
-  has_many :users, through: :memberships
+  has_many :contacts, dependent: :destroy
+  has_many :memberships, dependent: :destroy
+  has_many :users, through: :memberships, dependent: :destroy
   has_many :tasks
 
   validates :name, presence: true
