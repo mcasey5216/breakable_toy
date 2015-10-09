@@ -44,7 +44,7 @@ feature 'user goes to task new page', %{
     #   expect(current_path).to eq(group_task_path(@group))
     #   expect(page).to have_content("Task Created")
     # end
-
+    #
     # scenario 'User should be alerted if unsuccessful' do
     #   find('#task_group_id', visible: false).value(@group)
     #   click_button "Create Task"
