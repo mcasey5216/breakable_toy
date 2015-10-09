@@ -1,1 +1,13 @@
 <h3>Edit <small class="fi-torsos"><%= @group.name %> </small></h3>
+<%= form_for(@group) do |f| %>
+<fieldset>
+  <legend>Update Group</legend>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Update Group", class: "button" %>
+</fieldset>
+<% end %>

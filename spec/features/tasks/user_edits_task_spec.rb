@@ -14,35 +14,38 @@ feature 'user goes to group new page', %{
   feature "user is signed in" do
     before(:each) do
       @user = FactoryGirl.create(:user)
+      @group = FactoryGirl.create(:group, primary_user: @user)
+      @task = FactoryGirl.create(:task, group_id: @group.id)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
-      visit user_path(@user.id)
-      click_link 'Groups'
-      click_link 'Create Group'
+      visit task_path(@task)
+      click_link "Update Task"
     end
 
     scenario 'User should be able to navigate to new page from group show' do
-      expect(current_path).to eq(new_group_path)
+      expect(current_path).to eq(edit_task_path(@task))
     end
 
     scenario 'User should see the form' do
-      find_field("Name")
+      find_field("Title")
       find_field("Description")
     end
 
-    scenario 'User should be alerted if successful' do
-      fill_in "Name", with: "Group"
-      fill_in "Description", with: "Group Description"
-      click_button "Create Group"
 
-      expect(current_path).to eq(group_path(Group.last))
-      expect(page).to have_content("Group Created")
+    scenario 'User should be alerted if successful' do
+      fill_in "Title", with: "Task"
+      fill_in "Description", with: "Task Description"
+      click_button "Update Task"
+
+      expect(current_path).to eq(task_path(@task))
+      expect(page).to have_content("#{Task.last.title} has been updated.")
     end
 
     scenario 'User should be alerted if unsuccessful' do
-      click_button "Create Group"
+      fill_in "Title", with: ""
+      click_button "Update Task"
 
       expect(page).to have_content("can't be blank")
     end
