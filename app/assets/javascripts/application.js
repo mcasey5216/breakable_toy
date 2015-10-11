@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require autocomplete-rails
+//= require underscore
+//= require gmaps/google
+//= require_tree .
 
 $(function(){ $(document).foundation('tab', 'reflow'); });

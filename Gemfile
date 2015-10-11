@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'dotenv-rails'
 gem 'rails4-autocomplete'
+gem 'gmaps4rails', '2.0.3'
+gem 'geocoder'
 
 group :test do
   gem 'coveralls', require: false
@@ -34,4 +36,4 @@ group :development, :test do
 end
 
 gem 'devise'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.5.1.2'

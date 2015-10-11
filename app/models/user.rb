@@ -16,4 +16,21 @@ class User < ActiveRecord::Base
   validates :zip, presence: true
   validates :zip, length: { is: 5 }
   validates :phone, presence: true
+
+  def full_address
+    [address, city, state, zip].reject(&:empty?).join(" ")
+  end
+
+  def name
+    [first_name, last_name].join(" ")
+  end
+
+  def display_phone
+    ph = phone.to_s.split('')
+    [
+      ph[0..2].join(''),
+      ph[3..5].join(''),
+      ph[6..9].join('')
+    ].join(".") + " | ext " + phone_ext
+  end
 end

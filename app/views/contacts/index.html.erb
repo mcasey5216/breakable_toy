@@ -1,15 +1,25 @@
   <ul class="profile-block-list columns small-12 end">
-    <% @user.groups.each do |idx| %>
-      <% idx.contacts.each do |contact|  %>
+    <% @user.groups.each do |group| %>
+      <% group.contacts.each do |contact|  %>
         <%= link_to contact_path(contact) do %>
           <div class="contact-profile-block row">
-            <li>Company: <%= contact.company_name %></li>
-            <li>Type: <%= contact.category %></li>
-            <li>Contact: <%= contact.first_name %> <%= contact.last_name %></li>
-            <li>Call: <%= contact.phone %> ext:<%= contact.phone_ext %></li>
+            <li><strong><%= contact.company_name %></strong></li>
+            <li><span class="sub-type">type</span> <%= contact.category %></li>
+            <li>
+              <span class="sub-type">from</span>
+              <%= link_to group_path(contact.group) do %>
+                <span class="fi-torsos"> <%= contact.group.name %></span>
+              <% end %>
+            </li>
+            <li><span class="sub-type">contact</span> <%= contact.name %> </li>
+            <li><span class="sub-type">call</span> <%= contact.display_phone %> </li>
           </div>
         <% end %>
         <hr>
       <% end %>
     <% end %>
   </ul>
+
+  <div style="width: 800px;">
+    <div id="map" style="width: 800px; height: 800px;"></div>
+  </div>

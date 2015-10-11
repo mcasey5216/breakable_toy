@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :groups do
     resources :tasks, only: [:new, :create, :destroy]
+    resources :contacts, only: [:new, :create, :destroy]
     resources :memberships, only: [:index, :create] do
       get :autocomplete_user_email, on: :collection
     end
@@ -12,5 +13,5 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :memberships, only: [:index, :create]
   end
-  resources :contacts, only: [:index, :show]
+  resources :contacts
 end

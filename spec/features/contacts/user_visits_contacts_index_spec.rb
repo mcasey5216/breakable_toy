@@ -29,12 +29,10 @@ feature 'user goes to contact index page', %{
       FactoryGirl.create(:membership, user: @user, group: group)
       contact = FactoryGirl.create(:contact, group: group)
       click_link 'Contacts'
-      expect(page).to have_content(contact.first_name)
-      expect(page).to have_content(contact.last_name)
+      expect(page).to have_content(contact.name)
       expect(page).to have_content(contact.company_name)
       expect(page).to have_content(contact.category)
-      expect(page).to have_content(contact.phone)
-      expect(page).to have_content(contact.phone_ext)
+      expect(page).to have_content(contact.display_phone)
     end
   end
 end
