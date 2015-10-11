@@ -18,11 +18,19 @@ class User < ActiveRecord::Base
   validates :phone, presence: true
 
   def full_address
-    [self.address, self.city, self.state, self.zip].reject(&:empty?).join(" ")
+    [address, city, state, zip].reject(&:empty?).join(" ")
   end
 
   def name
-    [self.first_name, self.last_name].join(" ")
+    [first_name, last_name].join(" ")
   end
 
+  def display_phone
+    ph = phone.to_s.split('')
+    [
+      ph[0..2].join(''),
+      ph[3..5].join(''),
+      ph[6..9].join('')
+    ].join(".") + " | ext " + phone_ext
+  end
 end

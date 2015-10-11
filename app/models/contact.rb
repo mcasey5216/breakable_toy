@@ -14,26 +14,27 @@ class Contact < ActiveRecord::Base
   validates :phone, length: { is: 10 }
 
   def geo_address
-    [self.address, self.city, self.state, self.zip].reject(&:empty?).join(" ")
+    [self.address, city, state, zip].join(" ")
   end
 
   def display_address
-    a = [self.address, self.city].join(" | ")
-    b = [a, self.state].join(", ")
-    [b, self.zip].join(" | ")
+    a = [address, city].join(" | ")
+    b = [a, state].join(", ")
+    [b, zip].join(" | ")
   end
 
   def display_phone
-    phone = self.phone.to_s.split('')
-    [phone[0..2].join(''),
-    phone[3..5].join(''),
-    phone[6..9].join('')].join(".") + " | ext " + self.phone_ext
+    ph = phone.to_s.split('')
+    [
+      ph[0..2].join(''),
+      ph[3..5].join(''),
+      ph[6..9].join('')
+    ].join(".") + " | ext " + phone_ext
   end
 
   def name
-    [self.first_name, self.last_name].join(" ")
+    [first_name, last_name].join(" ")
   end
-
   geocoded_by :geo_address
   after_validation :geocode, if: :address_changed?
 end

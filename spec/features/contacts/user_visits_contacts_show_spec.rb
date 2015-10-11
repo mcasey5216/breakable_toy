@@ -23,17 +23,12 @@ feature 'user goes to contact show page', %{
       FactoryGirl.create(:membership, user: @user, group: group)
       contact = FactoryGirl.create(:contact, group: group)
       click_link 'Contacts'
-      click_link 'Company:'
-      expect(page).to have_content(contact.first_name)
-      expect(page).to have_content(contact.last_name)
+      click_link "#{contact.company_name}"
+      expect(page).to have_content(contact.name)
       expect(page).to have_content(contact.company_name)
       expect(page).to have_content(contact.category)
-      expect(page).to have_content(contact.phone)
-      expect(page).to have_content(contact.phone_ext)
-      expect(page).to have_content(contact.address)
-      expect(page).to have_content(contact.city)
-      expect(page).to have_content(contact.state)
-      expect(page).to have_content(contact.zip)
+      expect(page).to have_content(contact.display_phone)
+      expect(page).to have_content(contact.display_address)
       expect(page).to have_content(contact.description)
       expect(page).to have_content(contact.group.name)
     end
