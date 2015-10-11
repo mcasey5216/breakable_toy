@@ -1,13 +1,19 @@
 <div class="contact-profile-block row">
-  <%= image_tag("map-generic.jpg", class: "th columns small-4") %>
-  <ul class="profile-block-list columns small-5 end">
-    <li><%= @contact.first_name %> <%= @contact.last_name %></li>
-    <li><%= @contact.company_name %></li>
-    <li><%= @contact.phone %> ext:<%= @contact.phone_ext %></li>
-    <li><%= @contact.address %></li>
-    <li><%= @contact.city %>, <%= @contact.state %> <%= @contact.zip %></li>
-    <li><%= @contact.category %></li>
-    <li>from: <span class="fi-torsos"><%= @contact.group.name %></span></li>
+  <div class="columns small-6">
+    <div id="map" style="width: 400px; height: 400px;"></div>
+  </div class="columns small-4 end">
+    <ul class="profile-block-list">
+    <li><strong><%= @contact.company_name %></strong></li>
+    <li><%= @contact.name %></li>
+    <li><%= @contact.display_phone %></li>
+    <li><%= @contact.display_address %></li>
+    <li><span class="sub-type">type</span> <%= @contact.category %></li>
+    <li>
+      <span class="sub-type">from</span>
+      <%= link_to group_path(@contact.group) do %>
+        <span class="fi-torsos"> <%= @contact.group.name %></span>
+      <% end %>
+    </li>
   </ul>
 </div>
 <hr>
