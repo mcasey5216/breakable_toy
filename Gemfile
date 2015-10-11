@@ -34,4 +34,4 @@ group :development, :test do
 end
 
 gem 'devise'
-gem 'foundation-rails'
+gem 'foundation-rails', '= 5.5.2.1'

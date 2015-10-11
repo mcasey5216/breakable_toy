@@ -236,7 +236,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl
-  foundation-rails
+  foundation-rails (= 5.5.2.1)
   jbuilder (~> 2.0)
   jquery-rails
   launchy

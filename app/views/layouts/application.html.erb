@@ -28,16 +28,24 @@
       <div class="columns small-12">
         <dl class="sub-nav">
           <dd>
-            <span class="fi-torsos"><%= link_to "Groups", groups_path %></span>
+            <span class="fi-home"><%= link_to "Profile", user_path(current_user), class: "button dropdown" %></span>
+              <dl id="drop1" class="f-dropdown" data-dropdown-content>
+                <dd><a href="#">This is a link</a></dd>
+                <dd><a href="#">This is another</a></dd>
+                <dd><a href="#">Yet another</a></dd>
+              </dl>
           </dd>
           <dd>
-            <span class="fi-clipboard"><%= link_to "Tasks", tasks_path %></span>
+            <span class="fi-torsos"><%= link_to "Groups", groups_path, class: "button dropdown" %></span>
           </dd>
           <dd>
-            <span class="fi-torso-business"><%= link_to "Contacts", contacts_path %></span>
+            <span class="fi-clipboard"><%= link_to "Tasks", tasks_path, class: "button dropdown" %></span>
           </dd>
           <dd>
-            <a href="" class="fi-folder"> Files</a>
+            <span class="fi-torso-business"><%= link_to "Contacts", contacts_path, class: "button dropdown" %></span>
+          </dd>
+          <dd>
+            <span class="fi-folder"><%= link_to "Files", contacts_path, class: "button dropdown" %></span>
           </dd>
         </dl>
       </div>
@@ -64,6 +72,7 @@
 
           <%= javascript_include_tag 'application', "autocomplete-rails.js"  %>
             <%= yield :extra_footer %>
+
 </body>
 
 </html>
