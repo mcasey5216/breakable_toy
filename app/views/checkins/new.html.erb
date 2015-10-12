@@ -5,7 +5,7 @@
 <% coordinates = Geocoder.coordinates([request.location.latitude, request.location.longitude]) %>
 
 <%= form_for(@checkin) do |f| %>
-  <fieldset>
+  <fieldset class="checkin-local">
     <legend>Check-in</legend>
 
     <%= f.label :message %>
@@ -21,7 +21,7 @@
 <% end %>
 
 <%= form_for(@checkin) do |f| %>
-  <fieldset>
+  <fieldset class="checkin-contact">
     <legend>or</legend>
     <h5>Choose Contact</h5>
 

@@ -38,7 +38,11 @@ class User < ActiveRecord::Base
   end
 
   def last
-    l = last_sign_in_at
-    [l.month, l.day, l.year].join(".") + " at " + [l.hour, l.min].join(":")
+    if last_sign_in_at != nil
+      l = last_sign_in_at
+      [l.month, l.day, l.year].join(".") + " at " + [l.hour, l.min].join(":")
+    else
+      "first sign in"
+    end
   end
 end

@@ -21,4 +21,18 @@
 //= require gmaps/google
 //= require_tree .
 
-$(function(){ $(document).foundation('tab', 'reflow'); });
+$(function(){
+  $(document).foundation('tab', 'reflow');
+
+  $('.checkin-contact select, .checkin-contact input').attr("disabled", "true");
+  $('.checkin-contact').click(function(){
+    $('.checkin-local input').attr("disabled", "true");
+    $('.checkin-contact select, .checkin-contact input').removeAttr("disabled")
+  });
+
+  $('.checkin-local').click(function(){
+    $('.checkin-local input').removeAttr("disabled")
+    $('.checkin-contact select, .checkin-contact input').attr("disabled", "true")
+  });
+
+});
