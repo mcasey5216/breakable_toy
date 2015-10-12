@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :memberships, only: [:index, :create]
   end
   resources :contacts
+  resources :checkins, only: [:new, :create]
 end

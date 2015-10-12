@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011171900) do
+ActiveRecord::Schema.define(version: 20151011223149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "checkins", force: :cascade do |t|
+    t.float    "latitude",   null: false
+    t.float    "longitude",  null: false
+    t.integer  "user_id",    null: false
+    t.integer  "contact_id"
+    t.string   "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.integer "group_id",     null: false

@@ -1,8 +1,46 @@
-<%= render 'partials/user_profile' %>
+<div class="user-profile-block row">
+    <%= image_tag("avatar-generic.jpg", class: "th columns small-3") %>
+    <ul class="profile-block-list columns small-6 end">
+      <li><strong><%= @user.name %></strong></li>
+      <li><%= @user.title %></li>
+      <li><%= @user.email %></li>
+      <li><%= @user.display_address %></li>
+      <li><a href="tel:#{<%= @user.phone %>}"><%= @user.display_phone %></a></li>
+      <li><span class="sub-type">last | <%= @user.last %></span></li>
+    </ul>
+    <div class="columns small-2">
+      <%= link_to "Update", edit_user_registration_path, class: "button tiny expand" %>
+      <%= link_to "Check-In", new_checkin_path, class: "button tiny expand" %>
+    </div>
+</div>
 <hr>
-<%= render 'partials/task_block' %>
-<hr>
-<%= render 'partials/group_block' %>
-<hr>
-<%= render 'partials/user_block' %>
-<hr>
+
+<div class="row">
+  <div class="columns small-4">
+    <h4 class="fi-megaphone"> Checkin-ins:</h4>
+  </div>
+  <div class="columns small-8">
+    <h4 class="fi-comment"> Comments:</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns small-4">
+    <% @checkins.each do |checkin| %>
+      <div class="user-profile-block">
+        <ul class="profile-block-list">
+          <li>
+            <span class="sub-type">where</span> <%= checkin.address %>
+          </li>
+          <li>
+            <span class="sub-type">when</span> <%= checkin.when %>
+          </li>
+          <li>
+            <span class="sub-type">message</span> <%= checkin.message %>
+          </li>
+        </ul>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships, dependent: :destroy
   has_many :tasks, through: :memberships, dependent: :destroy
+  has_many :checkins, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -17,8 +18,10 @@ class User < ActiveRecord::Base
   validates :zip, length: { is: 5 }
   validates :phone, presence: true
 
-  def full_address
-    [address, city, state, zip].reject(&:empty?).join(" ")
+  def display_address
+    a = [address, city].join(" | ")
+    b = [a, state].join(", ")
+    [b, zip].join(" | ")
   end
 
   def name
@@ -31,6 +34,11 @@ class User < ActiveRecord::Base
       ph[0..2].join(''),
       ph[3..5].join(''),
       ph[6..9].join('')
-    ].join(".") + " | ext " + phone_ext
+    ].join(".")
+  end
+
+  def last
+    l = last_sign_in_at
+    [l.month, l.day, l.year].join(".") + " at " + [l.hour, l.min].join(":")
   end
 end
