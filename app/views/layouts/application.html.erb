@@ -67,12 +67,14 @@
           <%= javascript_include_tag 'application', "autocomplete-rails.js"  %>
             <%= yield :extra_footer %>
   <script>
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>, {draggable: true})
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
+    if ($("#map").length > 0) {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>, {draggable: true});
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    }
   </script>
 </body>
 

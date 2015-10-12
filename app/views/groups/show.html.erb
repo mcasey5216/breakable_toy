@@ -24,21 +24,21 @@
 </div>
 <hr>
 
-<div class="row">
-  <div class="columns small-4">
-    <h4 class="fi-torso-business"> Users:</h4>
+
+<div class="pop-up hide">
+  <div id='pop-up-content'>
   </div>
 </div>
 
 <div class="row">
-  <div class="columns small-4">
+  <div class="columns small-4 side-bar">
+    <div class="">
+      <h4 class="fi-torso-business"> Users:</h4>
+    </div>
     <% @group.users.each do |user| %>
-      <%= link_to user_path(user) do %>
-          <ul class="profile-block-list">
-            <li><%= user.name %></li>
+          <ul class="profile-block-list" id="side-user">
+            <li meta-data='<%=raw user.to_json %>'><%= user.name %></li>
           </ul>
-        <hr>
-      <% end %>
     <% end %>
 
     <div class="">
@@ -47,12 +47,9 @@
 
     <% @group.tasks.each do |task| %>
       <% if task != nil %>
-        <%= link_to task_path(task) do %>
-            <ul class="profile-block-list">
+            <ul class="profile-block-list" id="side-task">
               <li><%= task.title %></li>
             </ul>
-          <hr>
-        <% end %>
       <% end %>
     <% end %>
 
@@ -61,12 +58,9 @@
     </div>
 
     <% @group.contacts.each do |contact| %>
-        <%= link_to contact_path(contact) do %>
-            <ul class="profile-block-list">
+            <ul class="profile-block-list" id="side-contact">
               <li><%= contact.company_name %></li>
             </ul>
-          <hr>
-        <% end %>
       <% end %>
   </div>
 
