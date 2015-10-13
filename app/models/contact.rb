@@ -25,7 +25,7 @@ class Contact < ActiveRecord::Base
   end
 
   def display_phone
-    ph = phone.to_s.split('')
+    ph = phone.split('')
     [
       ph[0..2].join(''),
       ph[3..5].join(''),
