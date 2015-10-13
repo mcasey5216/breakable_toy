@@ -1,7 +1,7 @@
 class CheckinsController < ApplicationController
   def new
     @checkin = Checkin.new
-    @contact_options = Contact.all.map{|u| [ u.company_name, u.id ] }
+    @contact_options = Contact.all.map{ |u| [ u.company_name, u.id ] }
     @contacts = Contact.all
     @hash = Gmaps4rails.build_markers(@contacts) do |contact, marker|
       marker.lat contact.latitude

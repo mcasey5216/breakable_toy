@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 end
 class ActionDispatch::Request
-    def ip
-      "216.52.207.74"
-    end
+  def ip
+    "216.52.207.74"
+  end
 end

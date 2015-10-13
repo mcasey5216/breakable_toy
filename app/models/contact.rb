@@ -15,7 +15,7 @@ class Contact < ActiveRecord::Base
   validates :phone, length: { is: 10 }
 
   def geo_address
-    [self.address, city, state, zip].join(", ")
+    [address, city, state, zip].join(", ")
   end
 
   def display_address

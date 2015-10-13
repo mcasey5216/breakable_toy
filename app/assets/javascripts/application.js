@@ -54,10 +54,10 @@ $(function(){
     /* This is the same for all */
 
     /* This is the different base on json object for all */
-    wrapperDiv = document.createElement("div");
-    nameDiv = document.createElement("div");
+    var wrapperDiv = document.createElement("div");
+    var nameDiv = document.createElement("div");
     nameDiv.innerHTML = popUpData.first_name + " " + popUpData.last_name;
-    emailDiv = document.createElement("div");
+    var emailDiv = document.createElement("div");
     emailDiv.innerHTML = popUpData.email;
     wrapperDiv.appendChild(nameDiv);
     wrapperDiv.appendChild(emailDiv);
@@ -81,9 +81,9 @@ $(function(){
     for(var x = 0; x < userList.length; x++){
       var userName = $(userList[x]).find("[type='submit']").attr('value')
       if (userName.indexOf(query) <= -1) {
-        $(userList[x]).addClass('hide')
+        $(userList[x]).addClass('hide');
       } else {
-        $(userList[x]).removeClass('hide')
+        $(userList[x]).removeClass('hide');
       }
 
     }

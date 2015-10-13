@@ -1,7 +1,9 @@
+@import "colors";
+
 .disable-field-set {
-  background: gray;
+  background: $gray;
 }
 
 .disable-field-set h5 {
-  color: #bbb;
+  color: $shadow;
 }

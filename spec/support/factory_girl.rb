@@ -48,6 +48,6 @@ FactoryGirl.define do
     sequence(:message) { |n| "Message#{n}" }
     latitude 67.2
     longitude 67.4
-    user 
+    user
   end
 end

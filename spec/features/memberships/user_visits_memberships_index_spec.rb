@@ -42,7 +42,7 @@ feature 'user goes to membership index page', %{
       expect(current_path).to eq(group_path(@group))
 
       expect(page).to have_content(@group.name)
-      page.should have_link(@user2.email)
+      expect(page).to have_content(@user2.name)
     end
 
     scenario 'if user is adding to a group, they should see the task title' do

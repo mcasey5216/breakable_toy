@@ -16,6 +16,7 @@ feature 'user goes to home page', %{
   feature "user is signed in" do
     before(:each) do
       @user = FactoryGirl.create(:user)
+      @checkin = FactoryGirl.create(:checkin, user: @user)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
@@ -51,11 +52,9 @@ feature 'user goes to home page', %{
 
     scenario 'User should see checkin their checkins' do
       visit user_path(@user.id)
-      checkin = FactoryGirl.create(:checkin, user: @user)
-      binding.pry
-      expect(page).to have_content(checkin.address)
-      expect(page).to have_content(checkin.when)
-      expect(page).to have_content(checkin.message)
+      expect(page).to have_content(@checkin.address)
+      expect(page).to have_content(@checkin.when)
+      expect(page).to have_content(@checkin.message)
     end
   end
 end
