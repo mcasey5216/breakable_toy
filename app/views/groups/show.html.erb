@@ -1,8 +1,15 @@
-<h3 class="fi-torsos"> <%= @group.name %></h3>
-<%= link_to "Create Task", new_group_task_path(@group), class: "button" %>
-<%= link_to "Create Contact", new_group_contact_path(@group), class: "button" %>
+<div class="row">
+  <div class="columns large-6">
+    <h3 class="fi-torsos"> <%= @group.name %></h3>
+  </div>
+  <div class="group-buttons columns large-2">
+    <%= link_to "Create Task", new_group_task_path(@group), class: "button expand tiny" %>
+    <%= link_to "Create Contact", new_group_contact_path(@group), class: "button expand tiny" %>
+  </div>
+</div>
+
 <div class="group-profile-block row">
-  <div class="profile-block-list columns small-8">
+  <div class="profile-block-list columns large-8 small-12">
     <ul class="profile-block-list">
       <li><strong class="fi-torsos"> <%= @group.name %></strong></li>
       <li>
@@ -14,7 +21,7 @@
     </ul>
   </div>
 
-  <div class="columns small-2">
+  <div class="columns large-2 small-12">
     <% if @group.primary_user == current_user %>
         <%= link_to "Add Users", group_memberships_path(@group), class: "button expand tiny" %>
         <%= link_to "Delete Group", @group, method: :delete, class: 'button expand tiny' %>
@@ -24,44 +31,59 @@
 </div>
 <hr>
 
-
 <div class="pop-up hide">
   <div id='pop-up-content'>
   </div>
 </div>
 
 <div class="row">
-  <div class="columns small-4 side-bar">
-    <div class="">
-      <h4 class="fi-torso-business"> Users:</h4>
-    </div>
-    <% @group.users.each do |user| %>
-          <ul class="profile-block-list" id="side-user">
-            <li meta-data='<%=raw user.to_json %>'><%= user.name %></li>
-          </ul>
-    <% end %>
+  <div class="columns large-3 small-12 side-bar">
+    <h4 class="fi-megaphone"> Associations:</h4><hr>
+    <ul class="accordion" data-accordion>
+      <li class="accordion-navigation">
+        <a href="#panel1a"><span class="fi-torso-business"> Team</span></a>
+        <div id="panel1a" class="content active">
+          <% @group.users.each do |user| %>
+              <ul class="profile-block-list" id="side-user">
+                <li meta-data='<%=user.to_json %>' class="side-nav-user-item">
+                  <%= link_to user_path(user) do %><%= user.name %><% end %>
+                </li>
+              </ul>
+          <% end %>
+        </div>
+      </li>
 
-    <div class="">
-      <h4 class="fi-clipboard-pencil"> Tasks:</h4>
-    </div>
+      <li class="accordion-navigation">
+        <a href="#panel2a"><span class="fi-clipboard-pencil"> Tasks</span></a>
+        <div id="panel2a" class="content">
+          <% @group.tasks.each do |task| %>
+            <% if task != nil %>
+              <ul class="profile-block-list" id="side-task">
+                <li meta-data='<%=task.to_json %>' class="side-nav-task-item">
+                  <%= link_to task_path(task) do %><%= task.title %><% end %>
+                </li>
+              </ul>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
 
-    <% @group.tasks.each do |task| %>
-      <% if task != nil %>
-            <ul class="profile-block-list" id="side-task">
-              <li><%= task.title %></li>
-            </ul>
-      <% end %>
-    <% end %>
-
-    <div class="">
-      <h4 class="fi-address-book"> Contacts:</h4>
-    </div>
-
-    <% @group.contacts.each do |contact| %>
+      <li class="accordion-navigation">
+        <a href="#panel3a"><span class="fi-address-book"> Contacts</span></a>
+        <div id="panel3a" class="content">
+          <% @group.contacts.each do |contact| %>
             <ul class="profile-block-list" id="side-contact">
-              <li><%= contact.company_name %></li>
+              <li meta-data='<%=contact.to_json %>' class="side-nav-contact-item">
+                <%= link_to contact_path(contact) do %><%= contact.company_name %><% end %>
+              </li>
             </ul>
-      <% end %>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+    <hr>
   </div>
-
+  <div class="columns large-9">
+    <h4 class="fi-comment"> Comments:</h4><hr>
+  </div>
 </div>
