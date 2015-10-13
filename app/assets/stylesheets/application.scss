@@ -54,7 +54,7 @@ body {
 }
 
 .task-profile-block {
-  @include div-blocks($gray);
+  @include div-blocks($yellow);
   &:hover {
     @include div-hovers;
   }

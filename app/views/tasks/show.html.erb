@@ -1,36 +1,60 @@
 <div class="task-profile-block row">
-  <ul class="profile-block-list columns small-9 end">
+  <ul class="profile-block-list columns large-9 end">
     <li></li>
-    <li><h3 class="fi-clipboard-pencil"> <%= @task.title %>
+    <li>
+      <h3 class="fi-clipboard-pencil"> <%= @task.title %>
       <small class="fi-torsos"><%= @task.group.name %></small>
-    </h3>
-
+      </h3>
     </li>
     <li><%= @task.description %></li>
+    <li>completed? <%= @task.completed %></li>
   </ul>
-  <div class="columns small-3">
+  <div class="columns large-2">
     <% if @task.group.primary_user == current_user %>
-        <%= link_to "Add Users", task_memberships_path(@task), class: "button tiny" %>
-        <%= link_to "Delete Task", @task, method: :delete, class: 'button tiny' %>
-        <%= link_to "Update Task", edit_task_path(@task), class: 'button tiny' %>
+        <%= link_to "Add Users", task_memberships_path(@task), class: "button expand tiny" %>
+        <%= link_to "Delete Task", @task, method: :delete, class: 'button expand tiny' %>
+        <%= link_to "Update Task", edit_task_path(@task), class: 'button expand tiny' %>
+        <div class="switch radius">
+          <input id="exampleRadioSwitch2" type="radio" name="testGroup">
+          <label for="exampleRadioSwitch2"></label>
+        </div> 
     <% end %>
   </div>
 </div>
 <hr>
 <div class="row">
-  <div class="columns small-4">
-    <% @task.users.each do |user| %>
-      <%= link_to user_path(user) do %>
-        <div class="task-users-block">
-          <ul class="no-bullets">
-            <li>
-              <%= user.first_name %> <%= user.last_name %>
-            </li>
-            <li><%= user.email %></li>
-          </ul>
+  <div class="columns large-3 small-12 side-bar">
+    <h4 class="fi-megaphone"> Associations:</h4><hr>
+    <ul class="accordion" data-accordion>
+      <li class="accordion-navigation">
+        <a href="#panel1a"><span class="fi-torso-business"> Team</span></a>
+        <div id="panel1a" class="content active">
+          <% @task.users.each do |user| %>
+              <ul class="profile-block-list" id="side-user">
+                <li meta-data='<%=user.to_json %>' class="side-nav-user-item">
+                  <%= link_to user_path(user) do %><%= user.name %><% end %>
+                </li>
+              </ul>
+          <% end %>
         </div>
-        <hr>
-      <% end %>
-    <% end %>
+      </li>
+
+      <li class="accordion-navigation">
+        <a href="#panel3a"><span class="fi-address-book"> Contacts</span></a>
+        <div id="panel3a" class="content">
+          <% @task.group.contacts.each do |contact| %>
+            <ul class="profile-block-list" id="side-contact">
+              <li meta-data='<%=contact.to_json %>' class="side-nav-contact-item">
+                <%= link_to contact_path(contact) do %><%= contact.company_name %><% end %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+    <hr>
+  </div>
+  <div class="columns large-9">
+    <h4 class="fi-comment"> Comments:</h4><hr>
   </div>
 </div>
