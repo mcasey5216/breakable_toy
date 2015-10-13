@@ -7,12 +7,17 @@ feature 'user goes to group show page', %{
 
   Acceptance Criteria
   []Users should see the group info
+  []Users should see side nav with users, tasks, and contacts
 } do
   feature "user is signed in" do
     before(:each) do
       @user = FactoryGirl.create(:user)
+      @user2 = FactoryGirl.create(:user)
       @group = FactoryGirl.create(:group, primary_user: @user)
       FactoryGirl.create(:membership, user: @user, group: @group)
+      FactoryGirl.create(:membership, user: @user2, group: @group)
+      @task = FactoryGirl.create(:task, group: @group)
+      @contact = FactoryGirl.create(:contact, group: @group)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
@@ -23,12 +28,21 @@ feature 'user goes to group show page', %{
     end
 
     scenario 'User should see the details of the group' do
-      expect(page).to have_content("Main Contact:")
-      expect(page).to have_content(@group.primary_user.first_name)
-      expect(page).to have_content(@group.primary_user.last_name)
+      expect(page).to have_content("primary")
+      expect(page).to have_content(@group.primary_user.name)
       expect(page).to have_content(@group.primary_user.email)
       expect(page).to have_content(@group.name)
+      expect(page).to have_content("details")
       expect(page).to have_content(@group.description)
+    end
+
+    scenario 'Users should see side nav with users, tasks, and contacts' do
+      expect(page).to have_content("Users:")
+      expect(page).to have_content(@user2.name)
+      expect(page).to have_content("Tasks:")
+      expect(page).to have_content(@task.title)
+      expect(page).to have_content("Contacts:")
+      expect(page).to have_content(@contact.company_name)
     end
   end
 end

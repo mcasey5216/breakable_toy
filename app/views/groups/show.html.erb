@@ -3,72 +3,65 @@
 <%= link_to "Create Contact", new_group_contact_path(@group), class: "button" %>
 <div class="group-profile-block row">
   <div class="profile-block-list columns small-8">
-    <ul class="no-bullets">
+    <ul class="profile-block-list">
+      <li><strong class="fi-torsos"> <%= @group.name %></strong></li>
       <li>
-        Main Contact:
-        <ul>
-          <li>
-            <%= @group.primary_user.first_name %>
-            <%= @group.primary_user.last_name %>
-          </li>
-          <li><%= @group.primary_user.email %></li>
-        </ul>
+        <span class="sub-type">primary</span>
+        <%= @group.primary_user.name %>
+        <%= @group.primary_user.email %>
       </li>
-      <li><%= @group.name %></li>
-      <li><%= @group.description %></li>
+      <li><span class="sub-type">details</span> <%= @group.description %></li>
     </ul>
   </div>
 
-  <div class="columns small-3">
+  <div class="columns small-2">
     <% if @group.primary_user == current_user %>
-        <%= link_to "Add Users", group_memberships_path(@group), class: "button tiny" %>
-        <%= link_to "Delete Group", @group, method: :delete, class: 'button tiny' %>
-        <%= link_to "Update Group", edit_group_path(@group), class: 'button tiny' %>
+        <%= link_to "Add Users", group_memberships_path(@group), class: "button expand tiny" %>
+        <%= link_to "Delete Group", @group, method: :delete, class: 'button expand tiny' %>
+        <%= link_to "Update Group", edit_group_path(@group), class: 'button expand tiny' %>
     <% end %>
   </div>
 </div>
 <hr>
 
-<div class="row">
-  <div class="columns small-4">
-    <h4 class="fi-torso-business"> Users:</h4>
-  </div>
-  <div class="columns small-8">
-    <h4 class="fi-clipboard"> Tasks:</h4>
+
+<div class="pop-up hide">
+  <div id='pop-up-content'>
   </div>
 </div>
 
 <div class="row">
-  <div class="columns small-4">
+  <div class="columns small-4 side-bar">
+    <div class="">
+      <h4 class="fi-torso-business"> Users:</h4>
+    </div>
     <% @group.users.each do |user| %>
-      <%= link_to user_path(user) do %>
-        <div class="task-users-block">
-          <ul class="no-bullets">
-            <li>
-              <%= user.first_name %> <%= user.last_name %>
-            </li>
-            <li><%= user.email %></li>
+          <ul class="profile-block-list" id="side-user">
+            <li meta-data='<%=raw user.to_json %>'><%= user.name %></li>
           </ul>
-        </div>
-        <hr>
-      <% end %>
     <% end %>
-  </div>
 
-  <div class="columns small-8">
+    <div class="">
+      <h4 class="fi-clipboard-pencil"> Tasks:</h4>
+    </div>
+
     <% @group.tasks.each do |task| %>
       <% if task != nil %>
-        <%= link_to task_path(task) do %>
-          <div class="task-users-block">
-            <ul class="no-bullets">
+            <ul class="profile-block-list" id="side-task">
               <li><%= task.title %></li>
-              <li><%= task.description %></li>
             </ul>
-          </div>
-          <hr>
-        <% end %>
       <% end %>
     <% end %>
+
+    <div class="">
+      <h4 class="fi-address-book"> Contacts:</h4>
+    </div>
+
+    <% @group.contacts.each do |contact| %>
+            <ul class="profile-block-list" id="side-contact">
+              <li><%= contact.company_name %></li>
+            </ul>
+      <% end %>
   </div>
-  <hr>
+
 </div>

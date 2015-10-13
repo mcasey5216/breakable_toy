@@ -1,5 +1,6 @@
 class Contact < ActiveRecord::Base
   belongs_to :group
+  has_many :checkins
 
   validates :email, format:
     { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
@@ -14,7 +15,7 @@ class Contact < ActiveRecord::Base
   validates :phone, length: { is: 10 }
 
   def geo_address
-    [self.address, city, state, zip].join(" ")
+    [address, city, state, zip].join(", ")
   end
 
   def display_address

@@ -1,0 +1,37 @@
+<div class="columns small-6">
+  <div id="map" style="width: 400px; height: 400px;"></div>
+</div class="columns small-4 end">
+
+<% coordinates = Geocoder.coordinates([request.location.latitude, request.location.longitude]) %>
+
+<%= form_for(@checkin) do |f| %>
+  <fieldset class="checkin-local">
+    <legend>Check-in</legend>
+
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :latitude, value: request.location.latitude %>
+    <%= f.hidden_field :longitude, value: request.location.longitude %>
+
+
+    <%= f.submit "Checkin here", class: "button" %>
+  </fieldset>
+<% end %>
+
+<%= form_for(@checkin) do |f| %>
+  <fieldset class="checkin-contact">
+    <legend>or</legend>
+    <h5>Choose Contact</h5>
+
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+
+    <%= select(:post, :contact_id, @contact_options) %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <%= f.submit "Checkin", class: "button" %>
+  </fieldset>
+<% end %>

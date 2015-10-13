@@ -10,10 +10,13 @@ feature 'user goes to home page', %{
   []User should see their profile block which includes
     name, title, email, address, city, state, zip, phone
   []User should see settings button to change their profile
+  []User should see checkin button to change their profile
+  []User should see checkin their checkins
 } do
   feature "user is signed in" do
     before(:each) do
       @user = FactoryGirl.create(:user)
+      @checkin = FactoryGirl.create(:checkin, user: @user)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
@@ -30,18 +33,28 @@ feature 'user goes to home page', %{
       expect(page).to have_content('Files')
       expect(page).to have_content('Sign Out')
     end
+
     scenario 'User should see their profile block' do
       visit user_path(@user.id)
 
-      expect(page).to have_content(@user.first_name)
-      expect(page).to have_content(@user.last_name)
+      expect(page).to have_content(@user.name)
       expect(page).to have_content(@user.title)
-      expect(page).to have_content(@user.address)
-      expect(page).to have_content(@user.city)
-      expect(page).to have_content(@user.state)
-      expect(page).to have_content(@user.zip)
-      expect(page).to have_content(@user.phone)
-      expect(page).to have_content(@user.last_sign_in_at)
+      expect(page).to have_content(@user.display_address)
+      expect(page).to have_content(@user.display_phone)
+    end
+
+    scenario 'User should see settings and checkin button to change their profile' do
+      visit user_path(@user.id)
+
+      expect(page).to have_link("Settings")
+      expect(page).to have_link("Check-In")
+    end
+
+    scenario 'User should see checkin their checkins' do
+      visit user_path(@user.id)
+      expect(page).to have_content(@checkin.address)
+      expect(page).to have_content(@checkin.when)
+      expect(page).to have_content(@checkin.message)
     end
   end
 end

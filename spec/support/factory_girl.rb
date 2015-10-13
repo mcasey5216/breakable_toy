@@ -44,4 +44,10 @@ FactoryGirl.define do
     description 'description'
     group
   end
+  factory :checkin do
+    sequence(:message) { |n| "Message#{n}" }
+    latitude 67.2
+    longitude 67.4
+    user
+  end
 end
