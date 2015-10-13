@@ -37,11 +37,11 @@ feature 'user goes to group show page', %{
     end
 
     scenario 'Users should see side nav with users, tasks, and contacts' do
-      expect(page).to have_content("Users:")
+      expect(page).to have_content("Team")
       expect(page).to have_content(@user2.name)
-      expect(page).to have_content("Tasks:")
+      expect(page).to have_content("Tasks")
       expect(page).to have_content(@task.title)
-      expect(page).to have_content("Contacts:")
+      expect(page).to have_content("Contacts")
       expect(page).to have_content(@contact.company_name)
     end
   end

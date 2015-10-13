@@ -1,6 +1,36 @@
 @import "colors";
 
+@mixin side-nav-hover($bg-color) {
+  background-color: $bg-color;
+  border-radius: 3px;
+  padding: 2%;
+  color: $black;
+}
+
 .pop-up {
-  background-color: $gray;
+  background-color: $white;
   position: absolute;
+  border: 2px solid $gray;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px $shadow;
+  z-index: 10;
+}
+
+.side-bar {
+  background-color: $white;
+  border-radius: 10px;
+  padding-left: 3px;
+}
+
+.side-nav-user-item a:hover {
+  @include side-nav-hover($blue)
+}
+
+.side-nav-task-item a:hover {
+  @include side-nav-hover($yellow)
+}
+
+.side-nav-contact-item a:hover {
+  @include side-nav-hover($red)
 }
