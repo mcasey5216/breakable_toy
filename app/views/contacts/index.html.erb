@@ -1,4 +1,4 @@
-  <ul class="profile-block-list columns small-12 end">
+  <ul class="profile-block-list columns large-12 end">
     <% @user.groups.each do |group| %>
       <% group.contacts.each do |contact|  %>
         <%= link_to contact_path(contact) do %>

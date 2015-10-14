@@ -18,9 +18,7 @@ feature 'user goes to group new page', %{
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
-      visit user_path(@user.id)
-      click_link 'Groups'
-      click_link 'Create Group'
+      visit new_group_path
     end
 
     scenario 'User should be able to navigate to new page from group show' do

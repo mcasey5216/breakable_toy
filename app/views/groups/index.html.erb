@@ -1,10 +1,9 @@
-<%= link_to "Create Group", new_group_path, class: "button" %>
 <ul class="profile-block-list columns small-12 end">
   <% @memberships.each do |membership| %>
   <%= link_to group_path(membership.group) do %>
     <div class="group-profile-block row">
-      <li><%= membership.group.name %></li>
-      <li><%= membership.group.description %></li>
+      <li><strong class="fi-torsos"> <%= membership.group.name %></strong></li>
+      <li><span class="sub-type">details</span> <%= membership.group.description %></li>
     </div>
   <% end %>
   <hr>

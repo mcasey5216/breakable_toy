@@ -5,7 +5,7 @@
   <title>BreakableToy</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -14,8 +14,8 @@
   <%- if current_user -%>
     <div class="row">
       <span class="columns small-4">
-        <h2 class="fi-home">
-          <%= link_to " Home", user_path(current_user) %>
+        <h2 class="">
+          <%= link_to " HQ", user_path(current_user) %>
         </h2>
       </span>
       <div class="columns small-8">
@@ -31,16 +31,44 @@
       <div class="columns small-12">
         <dl class="sub-nav">
           <dd>
-            <span class="fi-torsos"><%= link_to "Groups", groups_path %></span>
+            <button href="#" data-dropdown="drop4" aria-controls="drop4" aria-expanded="false" class="fi-home button dropdown tiny"> Profile</button><br>
+            <ul id="drop4" data-dropdown-content class="f-dropdown" aria-hidden="true">
+              <li><%= link_to "My Profile", user_path(current_user), class: "fi-home" %></li>
+              <li><%= link_to "Check-in", new_checkin_path %></li>
+            </ul>
           </dd>
           <dd>
-            <span class="fi-clipboard-pencil"><%= link_to "Tasks", tasks_path %></span>
+            <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="fi-torsos button dropdown tiny"> Groups</button><br>
+            <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
+              <li><%= link_to "Create New Group", new_group_path %></li>
+              <li><%= link_to "All Groups", groups_path %></li>
+              <% current_user.groups.each do |group| %>
+                <li><%= link_to group.name, group_path(group), class: "fi-torsos" %></li>
+              <% end %>
+            </ul>
           </dd>
           <dd>
-            <span class="fi-address-book"><%= link_to "Contacts", contacts_path %></span>
+            <button href="#" data-dropdown="drop2" aria-controls="drop1" aria-expanded="false" class="fi-clipboard-pencil button dropdown tiny"> Tasks</button><br>
+            <ul id="drop2" data-dropdown-content class="f-dropdown" aria-hidden="true">
+              <li><%= link_to "All Tasks", tasks_path %></li>
+              <% current_user.tasks.each do |task| %>
+                <li><%= link_to task.title, task_path(task), class: "fi-clipboard-pencil" %></li>
+              <% end %>
+            </ul>
           </dd>
           <dd>
-            <a href="" class="fi-folder"> Files</a>
+            <button href="#" data-dropdown="drop3" aria-controls="drop1" aria-expanded="false" class="fi-address-book button dropdown tiny"> Contacts</button><br>
+            <ul id="drop3" data-dropdown-content class="f-dropdown" aria-hidden="true">
+              <li><%= link_to "All Contacts", contacts_path %></li>
+              <% current_user.groups.each do |group| %>
+                <% group.contacts.each do |contact| %>
+                  <li><%= link_to contact.company_name, contact_path(contact), class: "fi-address-book" %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </dd>
+          <dd>
+            <button href="#" data-dropdown="drop3" aria-controls="drop1" aria-expanded="false" class="fi-folder button dropdown tiny"> Files</button><br>
           </dd>
         </dl>
       </div>

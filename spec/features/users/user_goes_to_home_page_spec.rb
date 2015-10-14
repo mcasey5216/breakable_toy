@@ -21,12 +21,12 @@ feature 'user goes to home page', %{
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
+      visit user_path(@user.id)
     end
 
     scenario 'Users should see home icon and sub-nav bar' do
-      visit user_path(@user.id)
 
-      expect(page).to have_content('Home')
+      expect(page).to have_content('Profile')
       expect(page).to have_content('Groups')
       expect(page).to have_content('Tasks')
       expect(page).to have_content('Contacts')
@@ -35,7 +35,6 @@ feature 'user goes to home page', %{
     end
 
     scenario 'User should see their profile block' do
-      visit user_path(@user.id)
 
       expect(page).to have_content(@user.name)
       expect(page).to have_content(@user.title)
@@ -44,14 +43,12 @@ feature 'user goes to home page', %{
     end
 
     scenario 'User should see settings and checkin button to change their profile' do
-      visit user_path(@user.id)
 
       expect(page).to have_link("Settings")
       expect(page).to have_link("Check-In")
     end
 
     scenario 'User should see checkin their checkins' do
-      visit user_path(@user.id)
       expect(page).to have_content(@checkin.address)
       expect(page).to have_content(@checkin.when)
       expect(page).to have_content(@checkin.message)
