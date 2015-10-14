@@ -1,5 +1,5 @@
 <div class="user-profile-block row">
-    <%= image_tag("avatar-generic.jpg", class: "th columns large-3") %>
+    <%= image_tag(@user.profile_photo, class: "columns large-3") %>
     <ul class="profile-block-list columns large-6 end">
       <li><strong><%= @user.name %></strong></li>
       <li><%= @user.title %></li>
