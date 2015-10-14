@@ -63,7 +63,7 @@ feature 'user goes to membership index page', %{
       expect(current_path).to eq(task_path(@task))
 
       expect(page).to have_content(@task.title)
-      page.should have_link(@user2.email)
+      page.should have_link(@user2.name)
     end
   end
 end

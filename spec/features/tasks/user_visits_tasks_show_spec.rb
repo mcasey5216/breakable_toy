@@ -31,7 +31,7 @@ feature 'user goes to task show page', %{
       expect(page).to have_content(task.description)
       expect(page).to have_content(@user.first_name)
       expect(page).to have_content(@user.last_name)
-      expect(page).to have_content(@user.email)
+      expect(page).to have_content(@user.name)
     end
   end
 end
