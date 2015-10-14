@@ -14,6 +14,8 @@ gem 'dotenv-rails'
 gem 'rails4-autocomplete'
 gem 'gmaps4rails', '2.0.3'
 gem 'geocoder'
+gem 'carrierwave'
+gem 'fog'
 
 group :test do
   gem 'coveralls', require: false

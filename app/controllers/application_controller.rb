@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
       :phone,
       :password,
       :password_confirmation,
+      :profile_photo
     ]
     if params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) {

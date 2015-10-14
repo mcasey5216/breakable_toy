@@ -1,14 +1,18 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   has_many :primaries, class_name: 'Group', foreign_key: 'primary_user_id'
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships, dependent: :destroy
   has_many :tasks, through: :memberships, dependent: :destroy
   has_many :checkins, dependent: :destroy
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :city, presence: true

@@ -98,6 +98,12 @@
         <%= f.submit "Sign up", class: "button" %>
       </div>
     </div>
+    <div class="row">
+      <div class="field">
+        <%= f.label :profile_photo %><br />
+        <%= f.file_field :profile_photo %>
+      </div>
+    </div>
   </div>
 </fieldset>
 <% end %>

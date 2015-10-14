@@ -60,9 +60,12 @@
     emailDiv.innerHTML = popUpData.email;
     var phoneDiv = document.createElement('div');
     phoneDiv.innerHTML = popUpData.phone;
+    var photoDiv = document.createElement('div');
+    photoDiv.innerHTML = popUpData.profile_photo;
     wrapperDiv.appendChild(nameDiv);
     wrapperDiv.appendChild(emailDiv);
     wrapperDiv.appendChild(phoneDiv);
+    wrapperDiv.appendChild(photoDiv);
     /* This is the different base on json object for all */
 
 
