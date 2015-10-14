@@ -7,17 +7,12 @@
       </h3>
     </li>
     <li><%= @task.description %></li>
-    <li>completed? <%= @task.completed %></li>
   </ul>
   <div class="columns large-2">
     <% if @task.group.primary_user == current_user %>
         <%= link_to "Add Users", task_memberships_path(@task), class: "button expand tiny" %>
         <%= link_to "Delete Task", @task, method: :delete, class: 'button expand tiny' %>
         <%= link_to "Update Task", edit_task_path(@task), class: 'button expand tiny' %>
-        <div class="switch radius">
-          <input id="exampleRadioSwitch2" type="radio" name="testGroup">
-          <label for="exampleRadioSwitch2"></label>
-        </div> 
     <% end %>
   </div>
 </div>
