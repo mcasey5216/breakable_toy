@@ -1,6 +1,6 @@
 <div class="user-profile-block row">
-    <%= image_tag("avatar-generic.jpg", class: "th columns small-3") %>
-    <ul class="profile-block-list columns small-6 end">
+    <%= image_tag("avatar-generic.jpg", class: "th columns large-3") %>
+    <ul class="profile-block-list columns large-6 end">
       <li><strong><%= @user.name %></strong></li>
       <li><%= @user.title %></li>
       <li><%= @user.email %></li>
@@ -8,7 +8,7 @@
       <li><a href="tel:#{<%= @user.phone %>}"><%= @user.display_phone %></a></li>
       <li><span class="sub-type">last | <%= @user.last %></span></li>
     </ul>
-    <div class="columns small-2">
+    <div class="columns large-2">
       <%= link_to "Settings", edit_user_registration_path, class: "button tiny expand" %>
       <%= link_to "Check-In", new_checkin_path, class: "button tiny expand" %>
     </div>
@@ -16,16 +16,16 @@
 <hr>
 
 <div class="row">
-  <div class="columns small-4">
+  <div class="columns large-4">
     <h4 class="fi-marker"> Checkin-ins:</h4>
   </div>
-  <div class="columns small-8">
+  <div class="columns large-8">
     <h4 class="fi-comment"> Comments:</h4>
   </div>
 </div>
 
 <div class="row">
-  <div class="columns small-4">
+  <div class="columns large-4">
     <% @checkins.each do |checkin| %>
       <div class="user-profile-block">
         <ul class="profile-block-list">

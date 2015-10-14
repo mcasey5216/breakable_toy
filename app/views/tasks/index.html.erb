@@ -3,10 +3,9 @@
     <% if membership.task != nil %>
       <%= link_to task_path(membership.task) do %>
         <div class="task-profile-block row">
-          <li><%= membership.task.title %></li>
-          <li><%= membership.task.description %></li>
-          <li>Group Name:
-            <%= membership.group.name %></li>
+          <li><strong class="fi-clipboard-pencil"> <%= membership.task.title %></strong></li>
+          <li><span class="sub-type">details</span> <%= membership.task.description %></li>
+          <li><span class="sub-type fi-torsos">group</span> <%= membership.group.name %></li>
         </div>
       <% end %>
       <hr>
