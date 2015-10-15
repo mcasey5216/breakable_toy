@@ -56,4 +56,11 @@ FactoryGirl.define do
     group
     attachment { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'images', 'example_file.pdf')) }
   end
+  factory :comment do
+    sequence(:body) { |n| "Comment#{n}" }
+    group
+    user
+    task
+    contact 
+  end
 end

@@ -51,5 +51,22 @@
   </div>
   <div class="columns large-9">
     <h4 class="fi-comment"> Comments:</h4><hr>
+    <%= form_for [@task, @comment] do |f| %>
+      <%= f.text_field :body %>
+      <%= f.hidden_field :task_id, value: params[:id] %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Post Comment", class: "button tiny" %>
+    <% end %>
+    <hr>
+    <ul class="profile-block-list">
+      <% @task.comments.each do |comment| %>
+        <div class="comment-profile-block row">
+          <li><%= comment.body %></li>
+          <li><span class="sub-type"> at <%= comment.when %></span> </li>
+          <li><span class="sub-type fi-torso-business"> by <%= comment.user.name %></span></li>
+        </div>
+        <hr>
+      <% end %>
+    </ul>
   </div>
 </div>

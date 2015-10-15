@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @group = @task.group
+    @comment = Comment.new
   end
 
   def new
@@ -17,7 +18,7 @@ class TasksController < ApplicationController
     @group = @task.group
     if @task.save
       flash[:success] = 'Task Created'
-      redirect_to group_path(@task.group)
+      redirect_to task_path(@task)
     else
       flash[:alert] = @task.errors.full_messages.join(', ')
       redirect_to new_group_task_path(@task.group)

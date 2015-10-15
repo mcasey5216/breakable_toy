@@ -20,10 +20,7 @@ feature 'user goes to task new page', %{
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
-      visit user_path(@user.id)
-      click_link 'Groups'
-      click_link "#{@group.name}"
-      click_link 'Create Task'
+      visit new_group_task_path(@group)
     end
 
     scenario 'User should be able to navigate to new page from group show' do
@@ -35,22 +32,20 @@ feature 'user goes to task new page', %{
       find_field("Description")
     end
 
-    # scenario 'User should be alerted if successful' do
-    #   page.all("input['name=task[group_id]']", :visible => false).first.set(@group)
-    #   fill_in "Title", with: "task"
-    #   fill_in "Description", with: "description"
-    #   click_button "Create Task"
-    #
-    #   expect(current_path).to eq(group_task_path(@group))
-    #   expect(page).to have_content("Task Created")
-    # end
-    #
-    # scenario 'User should be alerted if unsuccessful' do
-    #   find('#task_group_id', visible: false).value(@group)
-    #   click_button "Create Task"
-    #
-    #   expect(current_path).to eq(new_group_task_path(@group))
-    #   expect(page).to have_content("can't be black")
-    # end
+    scenario 'User should be alerted if successful' do
+      fill_in "Title", with: "task"
+      fill_in "Description", with: "description"
+      click_button "Create Task"
+
+      expect(current_path).to eq(task_path(Task.last))
+      expect(page).to have_content("Task Created")
+    end
+
+    scenario 'User should be alerted if unsuccessful' do
+      click_button "Create Task"
+
+      expect(current_path).to eq(new_group_task_path(@group))
+      expect(page).to have_content("can't be blank")
+    end
   end
 end
