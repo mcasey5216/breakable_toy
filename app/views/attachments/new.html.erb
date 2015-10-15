@@ -1,0 +1,15 @@
+<h2>Attach a new file</h2>
+<%= form_for @attachment do |f| %>
+<fieldset>
+  <legend>New File</legend>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :attachment %>
+  <%= f.file_field :attachment %>
+
+  <%= f.hidden_field :group_id, value: params[:group_id] %>
+
+  <%= f.submit "Attach file", class: "button tiny" %>
+</fieldset>
+<% end %>

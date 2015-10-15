@@ -24,6 +24,7 @@ feature 'user registers', %Q{
     fill_in 'State', with: 'ma'
     fill_in 'Zip', with: '12345'
     fill_in 'Phone', with: '1234567890'
+    attach_file "Profile photo", "#{Rails.root}/spec/support/images/example_image.jpg"
 
     click_button 'Sign up'
 

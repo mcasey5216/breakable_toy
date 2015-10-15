@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships, dependent: :destroy
   has_many :tasks
+  has_many :attachments
 
   validates :name, presence: true
   validates :description, presence: true
