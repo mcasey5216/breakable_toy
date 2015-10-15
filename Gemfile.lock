@@ -362,7 +362,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl
   fog
-  foundation-icons-sass-rails
+  foundation-icons-sass-rails (~> 3.0.0)
   foundation-rails (= 5.5.1.2)
   geocoder
   gmaps4rails (= 2.0.3)
