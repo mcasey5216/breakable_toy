@@ -16,6 +16,7 @@ feature 'user goes to home page', %{
   feature "user is signed in" do
     before(:each) do
       @user = FactoryGirl.create(:user)
+      @group = FactoryGirl.create(:group, primary_user: @user)
       @checkin = FactoryGirl.create(:checkin, user: @user)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
@@ -47,7 +48,6 @@ feature 'user goes to home page', %{
     end
 
     scenario 'User should see settings and checkin button to change their profile' do
-
       expect(page).to have_link("Settings")
       expect(page).to have_link("Check-In")
     end

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :groups, through: :memberships, dependent: :destroy
   has_many :tasks, through: :memberships, dependent: :destroy
   has_many :checkins, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

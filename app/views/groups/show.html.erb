@@ -97,7 +97,25 @@
     </ul>
     <hr>
   </div>
+
   <div class="columns large-9">
     <h4 class="fi-comment"> Comments:</h4><hr>
+    <%= form_for [@group, @comment] do |f| %>
+      <%= f.text_field :body %>
+      <%= f.hidden_field :group_id, value: params[:id] %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Post Comment", class: "button tiny" %>
+    <% end %>
+    <hr>
+    <ul class="profile-block-list">
+      <% @group.comments.each do |comment| %>
+        <div class="comment-profile-block row">
+          <li><%= comment.body %></li>
+          <li><span class="sub-type"> at <%= comment.when %></span> </li>
+          <li><span class="sub-type fi-torso-business"> by <%= comment.user.name %></span></li>
+        </div>
+        <hr>
+      <% end %>
+    </ul>
   </div>
 </div>

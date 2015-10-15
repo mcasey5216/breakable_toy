@@ -15,6 +15,8 @@ class ContactsController < ApplicationController
       marker.lat contact.latitude
       marker.lng contact.longitude
     end
+    @comment = Comment.new
+    @checkins = Checkin.all
   end
 
   def new

@@ -14,8 +14,53 @@
         <span class="fi-torsos"> <%= @contact.group.name %></span>
       <% end %>
     </li>
+    <li>
+      <span class="sub-type">notes </span><%= @contact.description %>
+    </li>
   </ul>
 </div>
 <hr>
-<h4>Notes:</h4>
-<p><%= @contact.description %></p>
+<div class="row">
+  <div class="columns large-3">
+    <h4 class="fi-marker"> Checkin-ins:</h4><hr>
+    <% @checkins.each do |checkin| %>
+      <div class="user-profile-block">
+        <ul class="profile-block-list">
+          <li>
+            <span class="sub-type">where</span> <%= checkin.address %>
+          </li>
+          <li>
+            <span class="sub-type">when</span> <%= checkin.when %>
+          </li>
+          <li>
+            <span class="sub-type">message</span> <%= checkin.message %>
+          </li>
+          <li>
+            <span class="sub-type">by <%= checkin.user.name %></span>
+          </li>
+        </ul>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+  <div class="columns large-9">
+    <h4 class="fi-comment"> Comments:</h4><hr>
+    <%= form_for [@contact, @comment] do |f| %>
+      <%= f.text_field :body %>
+      <%= f.hidden_field :contact_id, value: params[:id] %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Post Comment", class: "button tiny" %>
+    <% end %>
+    <hr>
+    <ul class="profile-block-list">
+      <% @contact.comments.each do |comment| %>
+        <div class="comment-profile-block row">
+          <li><%= comment.body %></li>
+          <li><span class="sub-type"> at <%= comment.when %></span> </li>
+          <li><span class="sub-type fi-torso-business"> by <%= comment.user.name %></span></li>
+        </div>
+        <hr>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 class Contact < ActiveRecord::Base
   belongs_to :group
-  has_many :checkins
+  has_many :checkins, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :email, format:
     { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }

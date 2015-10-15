@@ -16,16 +16,8 @@
 <hr>
 
 <div class="row">
-  <div class="columns large-4">
-    <h4 class="fi-marker"> Checkin-ins:</h4>
-  </div>
-  <div class="columns large-8">
-    <h4 class="fi-comment"> Comments:</h4>
-  </div>
-</div>
-
-<div class="row">
-  <div class="columns large-4">
+  <div class="columns large-3">
+    <h4 class="fi-marker"> Checkin-ins:</h4><hr>
     <% @checkins.each do |checkin| %>
       <div class="user-profile-block">
         <ul class="profile-block-list">
@@ -42,5 +34,25 @@
       </div>
       <hr>
     <% end %>
+  </div>
+  <div class="columns large-9">
+    <h4 class="fi-comment"> Comments:</h4><hr>
+    <ul class="profile-block-list">
+      <% @comments.each do |comment| %>
+        <div class="comment-profile-block row">
+          <li><%= comment.body %></li>
+          <li><span class="sub-type"> at <%= comment.when %></span> </li>
+          <li><span class="sub-type fi-torso-business"> by <%= comment.user.name %></span></li>
+          <% if !comment.group_id.nil? %>
+            <li><span class="sub-type fi-torsos"> from <%= comment.group.name %></span></li>
+          <% elsif !comment.task_id.nil? %>
+            <li><span class="sub-type fi-clipboard-pencil"> from <%= comment.task.title %></span></li>
+          <% else !comment.contact_id.nil? %>
+            <li><span class="sub-type fi-address-book"> from <%= comment.contact.company_name %></span></li>
+          <% end %>
+        </div>
+        <hr>
+      <% end %>
+    </ul>
   </div>
 </div>

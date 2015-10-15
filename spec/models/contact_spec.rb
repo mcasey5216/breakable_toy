@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
   it { should belong_to :group }
+  it { should have_many :comments }
 
   it { should have_valid(:email).when("email@gmail.com", "gmail@email.com") }
   it { should_not have_valid(:email).when(nil, '', 'zest.com') }
