@@ -16,6 +16,7 @@ gem 'gmaps4rails', '2.0.3'
 gem 'geocoder'
 gem 'carrierwave'
 gem 'fog'
+gem 'foundation-icons-sass-rails'
 
 group :test do
   gem 'coveralls', require: false
