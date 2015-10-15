@@ -1,0 +1,18 @@
+<ul class="profile-block-list columns small-12">
+  <% @attachments.each do |attachment| %>
+    <%= link_to attachment.attachment_url do %>
+    <div class="group-profile-block">
+      <li><strong class="fi-file"> <%= attachment.name %></strong></li>
+      <li>
+        <span class="sub-type">from</span>
+        <span class="fi-torsos"> <%= attachment.group.name %></span>
+      </li>
+      <li>
+        <% @attachment = attachment %>
+        <%= link_to "Delete File", @attachment, method: :delete, class: 'button tiny' %>
+      </li>
+    </div>
+    <% end %>
+  <hr>
+  <% end %>
+</ul>

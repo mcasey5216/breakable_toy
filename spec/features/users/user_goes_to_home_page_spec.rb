@@ -40,6 +40,10 @@ feature 'user goes to home page', %{
       expect(page).to have_content(@user.title)
       expect(page).to have_content(@user.display_address)
       expect(page).to have_content(@user.display_phone)
+      expect(page).to have_xpath(
+        "//img[@src=\"/uploads/user/profile_photo/#{@user.id}/example_image.jpg\"]"
+      )
+      expect(@user.profile_photo.file.filename).to eq("example_image.jpg")
     end
 
     scenario 'User should see settings and checkin button to change their profile' do

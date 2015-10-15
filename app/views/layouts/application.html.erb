@@ -68,7 +68,10 @@
             </ul>
           </dd>
           <dd>
-            <button href="#" data-dropdown="drop3" aria-controls="drop1" aria-expanded="false" class="fi-folder button dropdown tiny"> Files</button><br>
+            <button href="#" data-dropdown="drop5" aria-controls="drop1" aria-expanded="false" class="fi-folder button dropdown tiny"> Files</button><br>
+            <ul id="drop5" data-dropdown-content class="f-dropdown" aria-hidden="true">
+              <li><%= link_to "All Files", attachments_path %></li>
+            </ul>
           </dd>
         </dl>
       </div>

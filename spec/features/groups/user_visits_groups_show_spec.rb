@@ -18,6 +18,7 @@ feature 'user goes to group show page', %{
       FactoryGirl.create(:membership, user: @user2, group: @group)
       @task = FactoryGirl.create(:task, group: @group)
       @contact = FactoryGirl.create(:contact, group: @group)
+      @attachment = FactoryGirl.create(:attachment, group: @group)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
@@ -43,6 +44,8 @@ feature 'user goes to group show page', %{
       expect(page).to have_content(@task.title)
       expect(page).to have_content("Contacts")
       expect(page).to have_content(@contact.company_name)
+      expect(page).to have_content("Files")
+      expect(page).to have_content(@attachment.name)
     end
   end
 end

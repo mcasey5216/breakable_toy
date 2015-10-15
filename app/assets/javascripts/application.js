@@ -133,6 +133,24 @@
     $('#pop-up-content').html(wrapperDiv);
     /* This is the same for all */
   });
+  // group show page side bar
+  $('#side-contact li').hover(function(){
+    $('.pop-up').removeClass('hide');
+    var popUpOffSet = $(this).offset();
+    popUpOffSet.left += $(this).width();
+    $('.pop-up').offset(popUpOffSet);
+    var popUpData = JSON.parse($(this).attr('meta-data'));
+
+    var wrapperDiv = document.createElement('div');
+    var nameDiv = document.createElement('div');
+    nameDiv.innerHTML = popUpData.name;
+    var descriptionDiv = document.createElement('div');
+    descriptionDiv.innerHTML = popUpData.description;
+    wrapperDiv.appendChild(nameDiv);
+    wrapperDiv.appendChild(descriptionDiv);
+
+    $('#pop-up-content').html(wrapperDiv);
+  });
 
   $('.side-bar').mouseleave(function() {
     $(".pop-up").addClass('hide');

@@ -3,8 +3,6 @@
     <h3 class="fi-torsos"> <%= @group.name %></h3>
   </div>
   <div class="group-buttons columns large-2">
-    <%= link_to "Create Task", new_group_task_path(@group), class: "button expand tiny" %>
-    <%= link_to "Create Contact", new_group_contact_path(@group), class: "button expand tiny" %>
   </div>
 </div>
 
@@ -23,10 +21,13 @@
 
   <div class="columns large-2 small-12">
     <% if @group.primary_user == current_user %>
-        <%= link_to "Add Users", group_memberships_path(@group), class: "button expand tiny" %>
-        <%= link_to "Delete Group", @group, method: :delete, class: 'button expand tiny' %>
-        <%= link_to "Update Group", edit_group_path(@group), class: 'button expand tiny' %>
+      <%= link_to "Add Users", group_memberships_path(@group), class: "button expand tiny" %>
+      <%= link_to "Delete Group", @group, method: :delete, class: 'button expand tiny' %>
+      <%= link_to "Update Group", edit_group_path(@group), class: 'button expand tiny' %>
     <% end %>
+      <%= link_to "Create Task", new_group_task_path(@group), class: "button expand tiny" %>
+      <%= link_to "Create Contact", new_group_contact_path(@group), class: "button expand tiny" %>
+      <%= link_to "Attach File", new_group_attachment_path(@group), class: "button expand tiny" %>
   </div>
 </div>
 <hr>
@@ -75,6 +76,19 @@
             <ul class="profile-block-list" id="side-contact">
               <li meta-data='<%=contact.to_json %>' class="side-nav-contact-item">
                 <%= link_to contact_path(contact) do %><%= contact.company_name %><% end %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </li>
+
+      <li class="accordion-navigation">
+        <a href="#panel4a"><span class="fi-folder"> Files</span></a>
+        <div id="panel4a" class="content">
+          <% @group.attachments.each do |attachment| %>
+            <ul class="profile-block-list" id="side-contact">
+              <li meta-data='<%=attachment.to_json %>' class="side-nav-attachment-item">
+                <%= link_to attachment.attachment_url do %><%= attachment.name %><% end %>
               </li>
             </ul>
           <% end %>
