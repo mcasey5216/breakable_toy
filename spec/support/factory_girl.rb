@@ -13,7 +13,9 @@ FactoryGirl.define do
     state 'ma'
     zip '12345'
     phone '1234567890'
-    profile_photo { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'images', 'example_image.jpg')) }
+    profile_photo { Rack::Test::UploadedFile.new(
+      File.join(Rails.root, 'spec', 'support', 'images', 'example_image.jpg')
+    ) }
   end
   factory :group do
     sequence(:name) { |n| "GroupName#{n}" }
@@ -54,6 +56,8 @@ FactoryGirl.define do
   factory :attachment do
     sequence(:name) { |n| "Name#{n}" }
     group
-    attachment { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'images', 'example_file.pdf')) }
+    attachment { Rack::Test::UploadedFile.new(
+      File.join(Rails.root, 'spec', 'support', 'images', 'example_file.pdf')
+    ) }
   end
 end

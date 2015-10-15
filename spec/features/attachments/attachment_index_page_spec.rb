@@ -35,7 +35,7 @@ feature 'user goes to attachment index page', %{
 
     scenario 'User should see the list of their attachments' do
       visit attachments_path
-# save_and_open_page
+
       expect(page).to have_content(@attachment.name)
       expect(page).to have_content(@attachment.group.name)
     end

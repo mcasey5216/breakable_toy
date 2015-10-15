@@ -26,10 +26,12 @@ class AttachmentsController < ApplicationController
   def destroy
     @attachment = Attachment.find(params[:id])
     @attachment.destroy
-    redirect_to attachments_path, notice:  "The attachment #{@attachment.name} has been deleted."
+    flash[:success] = "The attachment #{@attachment.name} has been deleted."
+    redirect_to attachments_path
   end
 
   protected
+
   def attachment_params
     params.require(:attachment).permit(:name, :attachment, :group_id)
   end
