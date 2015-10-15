@@ -61,6 +61,6 @@ FactoryGirl.define do
     group
     user
     task
-    contact 
+    contact
   end
 end
