@@ -17,8 +17,6 @@ feature 'user goes to group show page', %{
       @user = FactoryGirl.create(:user)
       @user2 = FactoryGirl.create(:user)
       @group = FactoryGirl.create(:group, primary_user: @user)
-      FactoryGirl.create(:membership, user: @user, group: @group)
-      FactoryGirl.create(:membership, user: @user2, group: @group)
       @task = FactoryGirl.create(:task, group: @group)
       @contact = FactoryGirl.create(:contact, group: @group)
       @attachment = FactoryGirl.create(:attachment, group: @group)
@@ -28,6 +26,8 @@ feature 'user goes to group show page', %{
       fill_in 'Password', with: @user.password
       click_button 'Log in'
       visit group_path(@group)
+      FactoryGirl.create(:membership, user: @user, group: @group)
+      FactoryGirl.create(:membership, user: @user2, group: @group)
     end
 
     scenario 'User should see the details of the group' do
