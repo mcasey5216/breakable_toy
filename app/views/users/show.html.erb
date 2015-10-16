@@ -18,7 +18,7 @@
 <div class="row">
   <div class="columns large-3">
     <h4 class="fi-marker"> Checkin-ins:</h4><hr>
-    <% @checkins.each do |checkin| %>
+    <% @checkins.reverse.each do |checkin| %>
       <div class="user-profile-block">
         <ul class="profile-block-list">
           <% if !checkin.contact_id.nil? %>
