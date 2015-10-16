@@ -33,6 +33,11 @@ class AttachmentsController < ApplicationController
   protected
 
   def attachment_params
-    params.require(:attachment).permit(:name, :attachment, :group_id)
+    params.require(:attachment).permit(
+      :name,
+      :attachment,
+      :description,
+      :group_id
+    )
   end
 end

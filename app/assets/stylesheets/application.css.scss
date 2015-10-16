@@ -20,6 +20,20 @@
 
 $margin:10%;
 
+a.button.tiny.sign-out {
+  color: $black;
+}
+
+.logo {
+  max-width: 75px;
+  position: relative;
+  top: 5px;
+}
+
+li {
+  margin: 0 0 -8px 0;
+}
+
 body {
   margin: $margin;
 }
@@ -28,6 +42,13 @@ body {
   color: $black;
   text-decoration: none;
   list-style-type: none;
+}
+
+.sub-nav-buttons {
+  position: relative;
+  top: 8px;
+  z-index: 10;
+//   color: $black;
 }
 
 @mixin div-blocks($border-color) {
@@ -113,4 +134,7 @@ body {
 .sub-type {
   color: $gray;
   font-size: 10px;
+}
+.sub-nav {
+  background-color: $green;
 }

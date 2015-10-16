@@ -1,7 +1,7 @@
 <div class="contact-profile-block row">
-  <div class="columns small-6">
-    <div id="map" style="width: 400px; height: 400px;"></div>
-  </div class="columns small-4 end">
+  <div class="columns large-6">
+    <div id="map" style="width: 350px; height: 350px;"></div>
+  </div class="columns large-4 end">
     <ul class="profile-block-list">
     <li><strong><%= @contact.company_name %></strong></li>
     <li><%= @contact.name %></li>
@@ -27,7 +27,9 @@
       <div class="user-profile-block">
         <ul class="profile-block-list">
           <li>
-            <span class="sub-type">where</span> <%= checkin.address %>
+            <span class="sub-type fi-address-book">
+              where <%= checkin.contact.company_name %>
+            </span>
           </li>
           <li>
             <span class="sub-type">when</span> <%= checkin.when %>

@@ -13,32 +13,22 @@
   <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
   <%- if current_user -%>
     <div class="row">
-      <span class="columns small-4">
-        <h2 class="">
-          <%= link_to " HQ", user_path(current_user) %>
-        </h2>
-      </span>
-      <div class="columns small-8">
-        <ul class="inline-list right">
-          <li>
-            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-    <div class="row">
       <div class="columns small-12">
         <dl class="sub-nav">
           <dd>
-            <button href="#" data-dropdown="drop4" aria-controls="drop4" aria-expanded="false" class="fi-home button dropdown tiny"> Profile</button><br>
+            <%= link_to user_path(current_user) do %>
+            <%= image_tag "hq-logo.png", class: "logo sub-nav-logo" %>
+            <% end %>
+          </dd>
+          <dd>
+            <button href="#" data-dropdown="drop4" aria-controls="drop4" aria-expanded="false" class="fi-home button dropdown tiny sub-nav-buttons"> Profile</button><br>
             <ul id="drop4" data-dropdown-content class="f-dropdown" aria-hidden="true">
               <li><%= link_to "My Profile", user_path(current_user), class: "fi-home" %></li>
               <li><%= link_to "Check-in", new_checkin_path %></li>
             </ul>
           </dd>
           <dd>
-            <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown tiny"><i class="fi-torsos"></i> Groups</button><br>
+            <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="fi-torsos button dropdown tiny sub-nav-buttons"> Groups</button><br>
             <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
               <li><%= link_to "Create New Group", new_group_path %></li>
               <li><%= link_to "All Groups", groups_path %></li>
@@ -48,7 +38,7 @@
             </ul>
           </dd>
           <dd>
-            <button href="#" data-dropdown="drop2" aria-controls="drop1" aria-expanded="false" class="fi-clipboard-pencil button dropdown tiny"> Tasks</button><br>
+            <button href="#" data-dropdown="drop2" aria-controls="drop1" aria-expanded="false" class="fi-clipboard-pencil button dropdown tiny sub-nav-buttons"> Tasks</button><br>
             <ul id="drop2" data-dropdown-content class="f-dropdown" aria-hidden="true">
               <li><%= link_to "All Tasks", tasks_path %></li>
               <% current_user.tasks.each do |task| %>
@@ -57,7 +47,7 @@
             </ul>
           </dd>
           <dd>
-            <button href="#" data-dropdown="drop3" aria-controls="drop1" aria-expanded="false" class="fi-address-book button dropdown tiny"> Contacts</button><br>
+            <button href="#" data-dropdown="drop3" aria-controls="drop1" aria-expanded="false" class="fi-address-book button dropdown tiny sub-nav-buttons"> Contacts</button><br>
             <ul id="drop3" data-dropdown-content class="f-dropdown" aria-hidden="true">
               <li><%= link_to "All Contacts", contacts_path %></li>
               <% current_user.groups.each do |group| %>
@@ -68,10 +58,13 @@
             </ul>
           </dd>
           <dd>
-            <button href="#" data-dropdown="drop5" aria-controls="drop1" aria-expanded="false" class="fi-folder button dropdown tiny"> Files</button><br>
+            <button href="#" data-dropdown="drop5" aria-controls="drop1" aria-expanded="false" class="fi-folder button dropdown tiny sub-nav-buttons"> Files</button><br>
             <ul id="drop5" data-dropdown-content class="f-dropdown" aria-hidden="true">
               <li><%= link_to "All Files", attachments_path %></li>
             </ul>
+          </dd>
+          <dd>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button tiny sign-out sub-nav-buttons" %>
           </dd>
         </dl>
       </div>

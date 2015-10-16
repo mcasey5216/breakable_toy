@@ -2,14 +2,36 @@
 <%= form_for @attachment do |f| %>
 <fieldset>
   <legend>New File</legend>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :name %>
+    </div>
+    <div class="large-10 columns">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :description %>
+    </div>
+    <div class="large-10 columns">
+      <%= f.text_area :description %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :attachment %>
+    </div>
+    <div class="large-10 columns">
+      <%= f.file_field :attachment %>
+    </div>
+  </div>
+    <%= f.hidden_field :group_id, value: params[:group_id] %>
 
-  <%= f.label :attachment %>
-  <%= f.file_field :attachment %>
-
-  <%= f.hidden_field :group_id, value: params[:group_id] %>
-
-  <%= f.submit "Attach file", class: "button tiny" %>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit "Attach file", class: "button right align" %>
+    </div>
+  </div>
 </fieldset>
 <% end %>

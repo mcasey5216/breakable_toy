@@ -16,7 +16,7 @@
     <%= f.hidden_field :longitude, value: request.location.longitude %>
 
 
-    <%= f.submit "Checkin here", class: "button" %>
+    <%= f.submit "Checkin here", class: "button submit" %>
   </fieldset>
 <% end %>
 
@@ -28,10 +28,10 @@
     <%= f.label :message %>
     <%= f.text_field :message %>
 
-    <%= select(:post, :contact_id, @contact_options) %>
+    <%= f.collection_select(:contact_id, @contacts, :id, :company_name) %>
 
     <%= f.hidden_field :user_id, value: current_user.id %>
 
-    <%= f.submit "Checkin", class: "button" %>
+    <%= f.submit "Checkin", class: "button submit" %>
   </fieldset>
 <% end %>

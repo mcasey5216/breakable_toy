@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
       marker.lng contact.longitude
     end
     @comment = Comment.new
-    @checkins = Checkin.all
+    @checkins = Checkin.where(contact_id: params[:id])
   end
 
   def new
