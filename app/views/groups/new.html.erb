@@ -2,12 +2,27 @@
 <%= form_for(@group) do |f| %>
 <fieldset>
   <legend>New Group</legend>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :name, class: "right inline" %>
+    </div>
+    <div class="large-10 columns">
+      <%= f.text_field :name, placeholder: "please enter a name for your group" %>
+    </div>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.submit "Create Group", class: "button" %>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :description, class: "right inline" %>
+    </div>
+    <div class="large-10 columns">
+      <%= f.text_area :description, placeholder: "please enter a description of the group, ie: goals, purpose" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns large-12">
+      <%= f.submit "Create Group", class: "button right inline" %>
+    </div>
+  </div>
 </fieldset>
 <% end %>

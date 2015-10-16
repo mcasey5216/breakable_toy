@@ -24,7 +24,7 @@
 
   $(function(){ $(document).foundation(); });
   // checkin field set on new page
-  $('.checkin-contact select, .checkin-contact input').attr('disabled', 'true');
+  $('.checkin-contact select, .checkin-contact input, .checkin-contact.submit').attr('disabled', 'true');
   $('.checkin-contact').addClass('disable-field-set');
 
   $('.checkin-contact').click(function(){
@@ -38,7 +38,7 @@
     $('.checkin-contact').addClass('disable-field-set');
     $('.checkin-local').removeClass('disable-field-set');
     $('.checkin-local input').removeAttr("disabled")
-    $('.checkin-contact select, .checkin-contact input').attr('disabled', 'true');
+    $('.checkin-contact select, .checkin-contact input, .checkin-contact.submit').attr('disabled', 'true');
   });
 
 
@@ -60,12 +60,9 @@
     emailDiv.innerHTML = popUpData.email;
     var phoneDiv = document.createElement('div');
     phoneDiv.innerHTML = popUpData.phone;
-    var photoDiv = document.createElement('div');
-    photoDiv.innerHTML = popUpData.profile_photo;
     wrapperDiv.appendChild(nameDiv);
     wrapperDiv.appendChild(emailDiv);
     wrapperDiv.appendChild(phoneDiv);
-    wrapperDiv.appendChild(photoDiv);
     /* This is the different base on json object for all */
 
 

@@ -21,14 +21,21 @@
     <% @checkins.each do |checkin| %>
       <div class="user-profile-block">
         <ul class="profile-block-list">
+          <% if !checkin.contact_id.nil? %>
+            <li>
+              <span class="sub-type">at</span>
+                 <span class="fi-address-book">
+                 <%= checkin.contact.company_name %>
+                 </span>
+            </li>
+          <% end %>
           <li>
-            <span class="sub-type">where</span> <%= checkin.address %>
+            <span class="sub-type">where | <%= checkin.address %></span>
+          <li>
+            <span class="sub-type">when | <%= checkin.when %></span>
           </li>
           <li>
-            <span class="sub-type">when</span> <%= checkin.when %>
-          </li>
-          <li>
-            <span class="sub-type">message</span> <%= checkin.message %>
+            <span class="sub-type">message | <%= checkin.message %></span>
           </li>
         </ul>
       </div>
@@ -36,7 +43,7 @@
     <% end %>
   </div>
   <div class="columns large-9">
-    <h4 class="fi-comment"> Comments:</h4><hr>
+    <h4 class="fi-comment"> Recent Comments:</h4><hr>
     <ul class="profile-block-list">
       <% @comments.each do |comment| %>
         <div class="comment-profile-block row">

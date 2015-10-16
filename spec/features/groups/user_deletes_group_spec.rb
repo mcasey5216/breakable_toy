@@ -13,12 +13,12 @@ feature 'user deletes a group', %{
     before(:each) do
       @user = FactoryGirl.create(:user)
       @group = FactoryGirl.create(:group, primary_user: @user)
-      FactoryGirl.create(:membership, user: @user, group: @group)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
       visit group_path(@group)
+      FactoryGirl.create(:membership, user: @user, group: @group)
     end
 
     scenario 'Users see the delete button on show page' do

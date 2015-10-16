@@ -15,12 +15,11 @@ feature 'user goes to task new page', %{
     before(:each) do
       @user = FactoryGirl.create(:user)
       @group = FactoryGirl.create(:group, primary_user: @user)
-      FactoryGirl.create(:membership, user: @user, group: @group)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
-      visit new_group_task_path(@group)
+      visit new_group_task_path(@group.id)
     end
 
     scenario 'User should be able to navigate to new page from group show' do
