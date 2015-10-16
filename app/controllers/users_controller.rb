@@ -7,7 +7,9 @@ class UsersController < ApplicationController
     memberships = Membership.where(user_id: current_user)
     memberships.each do |membership|
       comments << Comment.where(group_id: membership.group.id)
-      comments << Comment.where(task_id: membership.task.id)
+      membership.group.tasks.each do |task|
+        comments << Comment.where(task_id: task.id)
+      end
       membership.group.contacts.each do |contact|
         comments << Comment.where(contact_id: contact.id)
       end
