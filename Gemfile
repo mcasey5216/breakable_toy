@@ -10,7 +10,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'dotenv-rails'
-gem 'rails4-autocomplete'
 gem 'gmaps4rails', '2.0.3'
 gem 'geocoder'
 gem 'carrierwave'

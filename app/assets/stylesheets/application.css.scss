@@ -18,12 +18,6 @@
 @import "colors";
 @import "foundation-icons";
 
-$margin:10%;
-
-a.button.tiny.sign-out {
-  color: $black;
-}
-
 .logo {
   max-width: 75px;
   position: relative;
@@ -35,102 +29,9 @@ li {
 }
 
 body {
-  margin: $margin;
+  margin: 10%;
 }
 
-.profile-block-list {
-  color: $black;
-  text-decoration: none;
-  list-style-type: none;
-}
-
-.sub-nav-buttons {
-  position: relative;
-  top: 8px;
-  z-index: 10;
-//   color: $black;
-}
-
-@mixin div-blocks($border-color) {
-  border: 2px solid $border-color;
-  padding: 2%;
-  border-radius: 10px;
-}
-
-@mixin div-hovers {
-  padding: 2%;
-  box-shadow: 5px 5px 5px $shadow;
-}
-
-.user-profile-block {
-  @include div-blocks($gray);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.group-profile-block {
-  @include div-blocks($purple);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.task-profile-block {
-  @include div-blocks($yellow);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.group-block {
-  @include div-blocks($orange);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.task-block {
-  @include div-blocks($purple);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.user-block {
-  @include div-blocks($green);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.contact-profile-block {
-  @include div-blocks($green);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.attachment-profile-block {
-  @include div-blocks($blue);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.comment-profile-block {
-  @include div-blocks($orange);
-  &:hover {
-    @include div-hovers;
-  }
-}
-
-.task-users-block {
-  @include div-blocks($green);
-  &:hover {
-    @include div-hovers;
-  }
-}
 .sub-type {
   color: $gray;
   font-size: 10px;
