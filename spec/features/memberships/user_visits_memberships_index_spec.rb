@@ -17,12 +17,12 @@ feature 'user goes to membership index page', %{
       @user2 = FactoryGirl.create(:user)
       @group = FactoryGirl.create(:group, primary_user: @user)
       @task = FactoryGirl.create(:task, group: @group)
-      FactoryGirl.create(:membership, user: @user, group: @group, task: @task)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
       visit user_path(@user.id)
+      FactoryGirl.create(:membership, user: @user, group: @group, task: @task)
     end
 
     scenario 'if user is adding to a group, they should see the group name' do

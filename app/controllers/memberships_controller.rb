@@ -1,5 +1,4 @@
 class MembershipsController < ApplicationController
-  autocomplete :user, :email, full: true, extra_data: [:first_name]
   def index
     if params[:group_id]
       @group = Group.find(params[:group_id])

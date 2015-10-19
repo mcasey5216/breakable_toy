@@ -1,23 +1,23 @@
 @import "colors";
 
 .disable-field-set {
-  background: #ddd;
-  color: #ddd;
+  background: $med-gray;
+  color: $med-gray;
 }
 
 .disable-field-set h5 {
-  color: #eee;
+  color: $light-gray;
 }
 
 .disable-field-set label {
-  color: #eee;
+  color: $light-gray;
 }
 
 select:disabled {
-  color: #eee;
+  color: $light-gray;
 }
 
 .disable-field-set input.submit {
-  background-color: #ddd;
-  color: #eee;
+  background-color: $med-gray;
+  color: $light-gray;
 }
